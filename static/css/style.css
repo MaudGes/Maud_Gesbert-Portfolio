@@ -6,7 +6,8 @@
   --color-bg: #FFFFFF;         /* fond */
   --color-btn-bg: #3B82F6;     /* bleu vif bouton */
   --color-btn-text: #FFFFFF;   /* texte bouton */
-  --color-strong : #00553E;    /* texte strong */
+  --color-h3 : #00553E;    /* texte strong */
+  --color-important : #1C352D;    /* texte strong */
 }
 
 body {
@@ -41,8 +42,12 @@ h2 {
   color: var(--color-h2);
 }
 
-strong {
+h3 {
   color: var(--color-strong);
+}
+
+important-text {
+  color: var(--color-important);
 }
 
 .btn {
