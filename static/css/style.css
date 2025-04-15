@@ -43,11 +43,12 @@ h2 {
 }
 
 h3 {
-  color: var(--color-strong);
+  color: var(--color-h3);
 }
 
 important-text {
   color: var(--color-important);
+  font-weight: bold;
 }
 
 .btn {
