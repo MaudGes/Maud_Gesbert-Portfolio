@@ -3,6 +3,20 @@
 {% block content %}
 <h1>Prédiction sur la possibilité de développer une maladie cardiaque ou de faire une crise cardiaque</h1>
 
+<p>
+    <important-text>Description</important-text>
+    Projet personnel basé sur un jeu de données du CDC (Centers for Disease Control and Prevention),
+    une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
+    En utilisant ces données, j'ai pu tester et créer un modèle de machine learning qui permet de prédire
+    si une personne est à risque de développer une maladie cardiaque en se basant sur differents critères
+    de santé.
+
+    N'hésitez pas à essayer !
+
+    NB : Pour respecter le cadre RGPD, les données que vous fournissez ne sont pas conservées, 
+    elle sont automatiquement détruites lorsque la page est quittée ou rechargée.
+</p>
+
 <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
 
   <!-- General Health -->
