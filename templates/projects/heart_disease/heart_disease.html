@@ -2,6 +2,109 @@
 {% block title %}Projet : Heart Disease{% endblock %}
 {% block content %}
 <h1>Projet : Prédiction des maladies cardiaques</h1>
-<p>Ce projet vise à prédire la présence d'une maladie cardiaque à partir de données patients en utilisant des algorithmes de machine learning.</p>
+
+<form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
+
+  <!-- General Health -->
+  <label>État de santé général :
+    <select name="GenHlth" required>
+      <option value="1">1 - Excellente</option>
+      <option value="2">2 - Bon</option>
+      <option value="3">3 - Moyen</option>
+      <option value="4">4 - Mauvais</option>
+      <option value="5">5 - Très mauvais</option>
+    </select>
+  </label><br><br>
+
+  <!-- Âge réel -->
+  <label>Âge réel :
+    <input type="number" id="real_age" min="18" max="120" required>
+    <input type="hidden" name="Age" id="Age">
+  </label><br><br>
+
+  <!-- Binaire & catégoriques -->
+  <label>AVC :
+    <select name="Stroke" required>
+      <option value="0">0 - Non</option>
+      <option value="1">1 - Oui</option>
+    </select>
+  </label><br><br>
+
+  <label>Sexe :
+    <select name="Sex" required>
+      <option value="0">0 - Femme</option>
+      <option value="1">1 - Homme</option>
+    </select>
+  </label><br><br>
+
+  <label>Cholestérol élevé :
+    <select name="HighChol" required>
+      <option value="0">0 - Non</option>
+      <option value="1">1 - Oui</option>
+    </select>
+  </label><br><br>
+
+  <label>Hypertension :
+    <select name="HighBP" required>
+      <option value="0">0 - Non</option>
+      <option value="1">1 - Oui</option>
+    </select>
+  </label><br><br>
+
+  <label>Diabète :
+    <select name="Diabetes" required>
+      <option value="0">0 - Non / Uniquement pendant grossesse </option>
+      <option value="1">1 - Pré-diabète</option>
+      <option value="2">2 - Oui</option>
+    </select>
+  </label><br><br>
+
+  <!-- Santé physique -->
+  <label>Jours de mauvaise santé physique (sur 30) :
+    <input type="number" name="PhysHlth" min="0" max="30" required>
+  </label><br><br>
+
+  <!-- IMC : menu déroulant 12 à 98 -->
+  <label>IMC :
+    <select name="BMI" required>
+      {% for i in range(12, 99) %}
+        <option value="{{ i }}">{{ i }}</option>
+      {% endfor %}
+    </select>
+  </label><br><br>
+
+  <!-- Difficulté à marcher -->
+  <label>Difficulté à marcher :
+    <select name="DiffWalk" required>
+      <option value="0">0 - No difficulty</option>
+      <option value="1">1 - Has difficulty</option>
+    </select>
+  </label><br><br>
+
+  <button type="submit" class="btn">Prédire</button>
+</form>
+
+{% if prediction is defined %}
+  <h2>Résultat de la prédiction :</h2>
+  <p>{{ prediction }}</p>
+{% endif %}
+
 <a href="/" class="btn">Retour à l'accueil</a>
+
+<!-- JS : conversion âge réel vers classe d'âge -->
+<script>
+function convertAge() {
+  const realAge = parseInt(document.getElementById('real_age').value);
+  const ageField = document.getElementById('Age');
+
+  if (realAge < 18 || realAge > 120) {
+    alert("Veuillez entrer un âge entre 18 et 120.");
+    return false;
+  }
+
+  const ageClass = Math.min(Math.floor((realAge - 18) / 5) + 1, 13);
+  ageField.value = ageClass;
+  return true;
+}
+</script>
 {% endblock %}
