@@ -11,6 +11,8 @@
     si une personne est à risque de développer une maladie cardiaque en se basant sur differents critères
     de santé.<br>
 
+    Les questions ci dessous reprennent les questions posées par le CDC lors de leur étude sur les maladies cardiaques.<br>
+
     N'hésitez pas à essayer !<br>
 
     NB : Pour respecter le cadre RGPD, les données que vous fournissez ne sont pas conservées, 
@@ -20,7 +22,7 @@
 <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
 
   <!-- General Health -->
-  <label>Quel est votre état de santé général ?
+  <label><important-text>Comment estimez-vous votre état de santé général ?</important-text>
     <select name="GenHlth" required>
       <option value="1">1 - Excellent</option>
       <option value="2">2 - Bon</option>
@@ -31,41 +33,41 @@
   </label><br><br>
 
   <!-- Âge réel -->
-  <label>Quel est votre âge ?
+  <label><important-text>Quel est votre âge ?</important-text>
     <input type="number" id="real_age" min="18" max="120" required>
     <input type="hidden" name="Age" id="Age">
   </label><br><br>
 
   <!-- Binaire & catégoriques -->
-  <label>Avez vous du déjà fait un AVC ?
+  <label><important-text>Avez vous du déjà fait un AVC ?</important-text>
     <select name="Stroke" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
-  <label>Quel est votre sexe ?
+  <label><important-text>Quel est votre sexe ?</important-text>
     <select name="Sex" required>
       <option value="0">0 - Femme</option>
       <option value="1">1 - Homme</option>
     </select>
   </label><br><br>
 
-  <label>Avez vous du un taux de cholestérol élevé ?
+  <label><important-text>Avez vous un taux de cholestérol élevé ?</important-text>
     <select name="HighChol" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
-  <label>Avez vous du de l'hypertension ?
+  <label><important-text>Avez vous de l'hypertension ?</important-text>
     <select name="HighBP" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
-  <label>Avez vous du diabète ?
+  <label><important-text>Avez vous du diabète ?</important-text>
     <select name="Diabetes" required>
       <option value="0">0 - Non / Uniquement pendant grossesse </option>
       <option value="1">1 - Pré-diabète</option>
@@ -74,12 +76,12 @@
   </label><br><br>
 
   <!-- Santé physique -->
-  <label>A combien estimeze vous le nombre de jours de mauvaise santé physique sur les 30 derniers jours ?
+  <label><important-text>A combien estimez vous le nombre de jours de mauvaise santé physique sur les 30 derniers jours ?</important-text>
     <input type="number" name="PhysHlth" min="0" max="30" required>
   </label><br><br>
 
   <!-- IMC : menu déroulant 12 à 98 -->
-  <label>Quel est votre IMC ?
+  <label><important-text>Quel est votre IMC ?</important-text>
     <select name="BMI" required>
       {% for i in range(12, 99) %}
         <option value="{{ i }}">{{ i }}</option>
@@ -88,7 +90,7 @@
   </label><br><br>
 
   <!-- Difficulté à marcher -->
-  <label>Eprouvez-vous des difficultés à marcher ou à monter les escaliers ?
+  <label><important-text>Eprouvez-vous des difficultés à marcher ou à monter les escaliers ?</important-text>
     <select name="DiffWalk" required>
       <option value="0">0 - No difficulty</option>
       <option value="1">1 - Has difficulty</option>
