@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Maud Gesbert{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        nav {
-            background-color: #3B82F6;
-            padding: 1rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 1rem;
-            font-weight: bold;
-        }
-        .container {
-            padding: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Maud Gesbert{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+  <header>
     <nav>
-        <a href="/">Accueil</a>
-        <a href="/cv">CV</a>
-        <a href="/projects/heart_disease">Projet Heart Disease</a>
-        <a href="/projects/lite">Projet Lite</a>
+      <div class="nav-container">
+        <a href="/" class="logo">Maud Gesbert</a>
+        <ul class="nav-links">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/cv">CV</a></li>
+          <li><a href="/projects/heart_disease">Projet Heart Diseases</a></li>
+          <li><a href="/projects/lite">Projet Lite</a></li>
+        </ul>
+      </div>
     </nav>
-    <div class="container">
-        {% block content %}{% endblock %}
-    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>© 2025 Maud Gesbert. Tous droits réservés.</p>
+  </footer>
 </body>
 </html>
