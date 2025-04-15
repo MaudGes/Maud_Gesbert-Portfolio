@@ -1,0 +1,45 @@
+/* Charte graphique : Créatif clair avec bouton bleu */
+:root {
+  --color-primary: #EE4D5A;     /* texte principal (rose punchy) */
+  --color-secondary: #666666;  /* texte secondaire */
+  --color-bg: #FFFFFF;         /* fond */
+  --color-btn-bg: #3B82F6;     /* bleu vif bouton */
+  --color-btn-text: #FFFFFF;   /* texte bouton */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-secondary);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: var(--color-btn-bg);
+  padding: 1rem;
+}
+
+nav a {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.container {
+  padding: 2rem;
+}
+
+h1 {
+  color: var(--color-primary);
+}
+
+.btn {
+  background-color: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}

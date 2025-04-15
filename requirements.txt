@@ -1,0 +1,9 @@
+numpy
+pandas
+cloudpickle
+psutil
+scikit-learn
+scipy
+shap
+Flask
+gunicorn
