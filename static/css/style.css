@@ -1,6 +1,7 @@
 /* Charte graphique : Créatif clair avec bouton bleu */
 :root {
   --color-primary: #EE4D5A;     /* texte principal (rose punchy) */
+  --color-h2: #004958;          /* Couleur choisie pour h2 */
   --color-secondary: #666666;  /* texte secondaire */
   --color-bg: #FFFFFF;         /* fond */
   --color-btn-bg: #3B82F6;     /* bleu vif bouton */
@@ -33,6 +34,10 @@ nav a {
 
 h1 {
   color: var(--color-primary);
+}
+
+h2 {
+  color: var(--color-h2);
 }
 
 .btn {
