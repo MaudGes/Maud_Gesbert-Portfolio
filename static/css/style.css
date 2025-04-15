@@ -85,6 +85,12 @@ h3 {
   color: var(--color-h3);
 }
 
+/* Élément important-text conservé */
+important-text {
+  color: var(--color-important);
+  font-weight: bold;
+}
+
 /* Boutons modernes */
 .btn {
   background-color: var(--color-btn-bg);
