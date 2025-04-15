@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, abort
-import pickle
+import pandas as pd
 import os
+import pickle
 
 app = Flask(__name__)
 
@@ -18,6 +19,7 @@ def heart_disease():
 
     if request.method == "POST":
         try:
+            # Récupérer les valeurs du formulaire
             features = [
                 int(request.form["GenHlth"]),
                 int(request.form["Age"]),
@@ -31,12 +33,22 @@ def heart_disease():
                 int(request.form["DiffWalk"]),
             ]
 
+            # Colonnes attendues par le modèle
+            columns = [
+                "GenHlth", "Age", "Stroke", "Sex", "HighChol",
+                "HighBP", "Diabetes", "PhysHlth", "BMI", "DiffWalk"
+            ]
+
+            # Convertir en DataFrame
+            input_data = pd.DataFrame([features], columns=columns)
+
             # Charger le modèle
             model_path = os.path.join("templates", "projects", "heart_disease", "heart_disease_cart_pipeline.pkl")
             with open(model_path, "rb") as f:
                 model = pickle.load(f)
 
-            prediction_result = model.predict([features])[0]
+            # Prédire
+            prediction_result = model.predict(input_data)[0]
             prediction = (
                 "✅ Risque de maladie cardiaque détecté"
                 if prediction_result == 1
