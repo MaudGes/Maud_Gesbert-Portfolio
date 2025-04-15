@@ -6,7 +6,7 @@
 <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
 
   <!-- General Health -->
-  <label>État de santé général :
+  <label>Quel est votre état de santé général ?
     <select name="GenHlth" required>
       <option value="1">1 - Excellente</option>
       <option value="2">2 - Bon</option>
@@ -17,41 +17,41 @@
   </label><br><br>
 
   <!-- Âge réel -->
-  <label>Âge réel :
+  <label>Quel est votre âge ?
     <input type="number" id="real_age" min="18" max="120" required>
     <input type="hidden" name="Age" id="Age">
   </label><br><br>
 
   <!-- Binaire & catégoriques -->
-  <label>AVC :
+  <label>Avez vous du déjà fait un AVC ?
     <select name="Stroke" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
-  <label>Sexe :
+  <label>Quel est votre sexe ?
     <select name="Sex" required>
       <option value="0">0 - Femme</option>
       <option value="1">1 - Homme</option>
     </select>
   </label><br><br>
 
-  <label>Cholestérol élevé :
+  <label>Avez vous du un taux de cholestérol élevé ?
     <select name="HighChol" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
-  <label>Hypertension :
+  <label>Avez vous du de l'hypertension ?
     <select name="HighBP" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
-  <label>Diabète :
+  <label>Avez vous du diabète ?
     <select name="Diabetes" required>
       <option value="0">0 - Non / Uniquement pendant grossesse </option>
       <option value="1">1 - Pré-diabète</option>
@@ -60,12 +60,12 @@
   </label><br><br>
 
   <!-- Santé physique -->
-  <label>Jours de mauvaise santé physique (sur 30) :
+  <label>A combien estimeze vous le nombre de jours de mauvaise santé physique sur les 30 derniers jours ?
     <input type="number" name="PhysHlth" min="0" max="30" required>
   </label><br><br>
 
   <!-- IMC : menu déroulant 12 à 98 -->
-  <label>IMC :
+  <label>Quel est votre IMC ?
     <select name="BMI" required>
       {% for i in range(12, 99) %}
         <option value="{{ i }}">{{ i }}</option>
@@ -74,7 +74,7 @@
   </label><br><br>
 
   <!-- Difficulté à marcher -->
-  <label>Difficulté à marcher :
+  <label>Eprouvez-vous des difficultés à marcher ou à monter les escaliers ?
     <select name="DiffWalk" required>
       <option value="0">0 - No difficulty</option>
       <option value="1">1 - Has difficulty</option>
@@ -89,7 +89,7 @@
   <p>{{ prediction }}</p>
 {% endif %}
 
-<a href="/" class="btn">Retour à l'accueil</a>
+<br><a href="/" class="btn">Retour à l'accueil</a>
 
 <!-- JS : conversion âge réel vers classe d'âge -->
 <script>
