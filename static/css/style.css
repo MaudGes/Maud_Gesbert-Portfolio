@@ -42,7 +42,7 @@ h2 {
 }
 
 strong {
-  color: var(--color-primary);
+  color: var(--color-strong);
 }
 
 .btn {
