@@ -1,0 +1,9 @@
+# render.yaml
+services:
+  - type: web
+    name: mon-site-portfolio
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    plan: free
+    autoDeploy: true
