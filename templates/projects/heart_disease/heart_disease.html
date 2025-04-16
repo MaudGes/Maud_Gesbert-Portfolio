@@ -7,7 +7,9 @@
     <important-text>Description</important-text><br>
     Projet personnel basé sur un jeu de données du CDC (Centers for Disease Control and Prevention),
     une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
-    En utilisant ces données, j'ai pu tester et créer un modèle de machine learning qui permet de prédire
+    Les participant à cette étude sur les maladies cardiaque devaient répondre à des questions sur leur sante,
+    et indiquer s'il avait déjà contracté une maladie cardio-vasculaire ou fait une crise cardiaque.
+    En utilisant ces réponses, j'ai pu tester et créer un modèle de machine learning qui permet de prédire
     si une personne est à risque de développer une maladie cardiaque en se basant sur differents critères
     de santé.<br>
 
@@ -39,7 +41,7 @@
   </label><br><br>
 
   <!-- Binaire & catégoriques -->
-  <label><important-text>Avez vous du déjà fait un AVC ?</important-text>
+  <label><important-text>Avez-vous du déjà fait un AVC ?</important-text>
     <select name="Stroke" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
@@ -53,21 +55,21 @@
     </select>
   </label><br><br>
 
-  <label><important-text>Avez vous un taux de cholestérol élevé ?</important-text>
+  <label><important-text>Avez-vous un taux de cholestérol élevé ?</important-text>
     <select name="HighChol" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
-  <label><important-text>Avez vous de l'hypertension ?</important-text>
+  <label><important-text>Avez-vous de l'hypertension ?</important-text>
     <select name="HighBP" required>
       <option value="0">0 - Non</option>
       <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
-  <label><important-text>Avez vous du diabète ?</important-text>
+  <label><important-text>Avez-vous du diabète ?</important-text>
     <select name="Diabetes" required>
       <option value="0">0 - Non / Uniquement pendant grossesse </option>
       <option value="1">1 - Pré-diabète</option>
@@ -76,7 +78,7 @@
   </label><br><br>
 
   <!-- Santé physique -->
-  <label><important-text>A combien estimez vous le nombre de jours de mauvaise santé physique sur les 30 derniers jours ?</important-text>
+  <label><important-text>A combien estimez-vous le nombre de jours de mauvaise santé physique sur les 30 derniers jours ?</important-text>
     <input type="number" name="PhysHlth" min="0" max="30" required>
   </label><br><br>
 
@@ -92,8 +94,8 @@
   <!-- Difficulté à marcher -->
   <label><important-text>Eprouvez-vous des difficultés à marcher ou à monter les escaliers ?</important-text>
     <select name="DiffWalk" required>
-      <option value="0">0 - No difficulty</option>
-      <option value="1">1 - Has difficulty</option>
+      <option value="0">0 - Non </option>
+      <option value="1">1 - Oui</option>
     </select>
   </label><br><br>
 
