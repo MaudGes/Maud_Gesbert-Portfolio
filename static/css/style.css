@@ -6,9 +6,8 @@
   --color-bg: #FFFFFF;          /* Fond */
   --color-btn-bg: #3B82F6;      /* Bleu vif pour boutons & nav */
   --color-btn-text: #FFFFFF;    /* Texte des boutons */
-  --color-h3: #00553E;          /* Teinte pour h3 */
+  --color-h3: #228B22;          /* Teinte pour h3 */
   --color-important: #1C352D;   /* Texte important */
-  --color-descritption : #228B22; /* Description générale et étapes des projets */
 }
 
 /* Styles globaux */
@@ -89,12 +88,6 @@ h3 {
 /* Élément important-text conservé */
 important-text {
   color: var(--color-important);
-  font-weight: bold;
-}
-
-/* Élément important-text conservé */
-description-text {
-  color: var(--color-descritption);
   font-weight: bold;
 }
 
