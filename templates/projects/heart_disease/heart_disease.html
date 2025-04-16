@@ -4,10 +4,10 @@
 <h1>Possibilité de développer une maladie cardiaque, ou de faire une crise cardiaque</h1>
 
 <p>
-    <important-text>Description</important-text><br>
+    <description-text>Description</description-text><br>
     Projet personnel basé sur un jeu de données du CDC (Centers for Disease Control and Prevention),
     une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
-    Les participant à cette étude sur les maladies cardiaque devaient répondre à des questions sur leur sante,
+    Les participant à cette étude sur les maladies cardiaques devaient répondre à des questions sur leur santé,
     et indiquer s'il avait déjà contracté une maladie cardio-vasculaire ou fait une crise cardiaque.
     En utilisant ces réponses, j'ai pu tester et créer un modèle de machine learning qui permet de prédire
     si une personne est à risque de développer une maladie cardiaque en se basant sur differents critères
@@ -105,7 +105,9 @@
 {% if prediction is defined %}
   <h2>Résultat de la prédiction :</h2>
   <p>{{ prediction }}</p>
-{% endif %}
+{% endif %} <br>
+
+<description-text>Etapes de création du modèle :</description-text><br>
 
 <br><a href="/" class="btn">Retour à l'accueil</a>
 

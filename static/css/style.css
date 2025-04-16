@@ -8,6 +8,7 @@
   --color-btn-text: #FFFFFF;    /* Texte des boutons */
   --color-h3: #00553E;          /* Teinte pour h3 */
   --color-important: #1C352D;   /* Texte important */
+  --color-descritption : #21421E; /* Description générale et étapes des projets */
 }
 
 /* Styles globaux */
@@ -88,6 +89,12 @@ h3 {
 /* Élément important-text conservé */
 important-text {
   color: var(--color-important);
+  font-weight: bold;
+}
+
+/* Élément important-text conservé */
+description-text {
+  color: var(--color-descritption);
   font-weight: bold;
 }
 
