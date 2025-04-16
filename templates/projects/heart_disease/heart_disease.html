@@ -4,16 +4,16 @@
 <h1>Possibilité de développer une maladie cardiaque, ou de faire une crise cardiaque</h1>
 
 <p>
-    <h3>Description</h3><br>
-    Projet personnel basé sur un jeu de données du CDC (Centers for Disease Control and Prevention),
+    <h3>Description</h3>
+    Projet personnel basé sur un jeu de données du CDC (US Centers for Disease Control and Prevention),
     une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
-    Les participant à cette étude sur les maladies cardiaques devaient répondre à des questions sur leur santé,
+    Les participants à cette étude sur les maladies cardiaques devaient répondre à des questions sur leur santé,
     et indiquer s'il avait déjà contracté une maladie cardio-vasculaire ou fait une crise cardiaque.
     En utilisant ces réponses, j'ai pu tester et créer un modèle de machine learning qui permet de prédire
-    si une personne est à risque de développer une maladie cardiaque en se basant sur differents critères
+    si une personne est à risque de développer une maladie cardiaque en se basant sur différents critères
     de santé.<br>
 
-    Les questions ci dessous reprennent les questions posées par le CDC lors de leur étude sur les maladies cardiaques.<br>
+    Les questions ci-dessous reprennent les questions posées par le CDC lors de leur étude sur les maladies cardiaques.<br>
 
     N'hésitez pas à essayer !<br>
 
@@ -21,7 +21,7 @@
     elle sont automatiquement détruites lorsque la page est quittée ou rechargée.
 </p>
 
-<h3>Questions</h3><br>
+<h3>Questions</h3>
 
 <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
 
@@ -109,7 +109,61 @@
   <p>{{ prediction }}</p>
 {% endif %} <br>
 
-<h3>Etapes de création du modèle :</h3><br>
+<h3>Etapes de création du modèle :</h3>
+
+<div
+  id="pptCarousel"
+  class="carousel slide mt-4"
+>
+  <!-- Carousel indicators (the little dots) -->
+  <div class="carousel-indicators">
+    {% for idx in range(17) %}
+      <button
+        type="button"
+        data-bs-target="#pptCarousel"
+        data-bs-slide-to="{{ idx }}"
+        {% if idx == 0 %}class="active" aria-current="true"{% endif %}
+        aria-label="Slide {{ idx + 1 }}"
+      ></button>
+    {% endfor %}
+  </div>
+
+  <!-- Carousel inner: each slide item -->
+  <div class="carousel-inner">
+    {% for i in range(1, 18) %}
+      <div class="carousel-item {% if i == 1 %}active{% endif %}">
+        <!-- Slide image -->
+        <img
+          src="{{ url_for('static', filename='image/Maladie_Cardiaque_PPT/Diapositive' ~ i ~ '.jpeg') }}"
+          class="d-block w-100"
+          alt="Slide {{ i }}"
+        >
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Previous control -->
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#pptCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <!-- Next control -->
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#pptCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 <br><a href="/" class="btn">Retour à l'accueil</a>
 
