@@ -5,8 +5,11 @@ import pickle
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", endpoint="home")
 def home():
+    lang = request.args.get("lang", "fr")
+    if lang == "en":
+        return render_template("index_en.html")
     return render_template("index.html")
 
 @app.route("/cv")
