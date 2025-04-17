@@ -12,8 +12,11 @@ def home():
         return render_template("index_en.html")
     return render_template("index.html")
 
-@app.route("/cv")
+@app.route("/cv", endpoint="cv")
 def cv():
+    lang = request.args.get("lang", "fr")
+    if lang == "en":
+        return render_template("cv/cv_en.html")
     return render_template("cv/cv.html")
 
 @app.route("/projects/heart_disease", methods=["GET", "POST"])
