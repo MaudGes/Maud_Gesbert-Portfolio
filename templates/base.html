@@ -27,6 +27,13 @@
     </nav>
   </header>
 
+  {% set lang = request.args.get('lang', 'fr') %}
+  <div style="text-align: right; padding: 1em;">
+    <a href="{{ url_for(request.endpoint, **request.view_args, lang='en' if lang == 'fr' else 'fr') }}">
+      {{ 'English' if lang == 'fr' else 'Français' }}
+    </a>
+  </div>
+  
   <main class="container">
     {% block content %}{% endblock %}
   </main>
