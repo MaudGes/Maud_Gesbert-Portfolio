@@ -27,8 +27,9 @@
     </nav>
   </header>
 
-  {% set lang = request.args.get('lang', 'fr') %}
-  <div class="language-switcher">
+  <!-- nouveau conteneur pour centrer le bouton -->
+  <div class="language-bar">
+    {% set lang = request.args.get('lang', 'fr') %}
     {% if request.endpoint == 'home' %}
       <a href="{{ url_for('home', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
         {{ 'English' if lang == 'fr' else 'Français' }}

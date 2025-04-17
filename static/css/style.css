@@ -126,11 +126,6 @@ jade-color {
 
 /* Language button */
 
-.language-switcher {
-  text-align: left;
-  padding: 1rem;
-}
-
 .lang-btn {
   display: inline-block;
   background-color: #007bff;
