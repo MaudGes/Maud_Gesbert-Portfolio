@@ -228,7 +228,7 @@ a {
 
 /* Collapsible content */
 .collapsible-content {
-  display: none;
+  display: block;
   padding: 1rem;
   background-color: #f9f9f9;
   border-left: 5px solid var(--color-h3);
@@ -239,6 +239,10 @@ a {
 .arrow-icon {
   transition: transform 0.3s ease;
   font-size: 1.2rem;
+}
+
+.arrow-icon.rotated {
+  transform: rotate(180deg);
 }
 
 /* Fade animation */

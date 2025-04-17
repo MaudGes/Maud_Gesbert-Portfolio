@@ -49,7 +49,7 @@
       Anglais (Courant)</p>
     </div>
   </div>
-</section><br>
+</section>
 
 <div class="collapsible-block">
   <h3 class="collapsible-toggle" onclick="toggleSection('references', this)">
@@ -63,7 +63,7 @@
       Téléphone : 06 89 17 16 44
     </section>
   </div>
-</div><br>
+</div>
 
 <div class="collapsible-block">
   <h3 class="collapsible-toggle" onclick="toggleSection('experiences', this)">
@@ -263,7 +263,7 @@
       </ul>
     </section>
   </div>
-</div>
+</div><br>
 
 <a href="/" class="btn">Retour à l'accueil</a>
 
@@ -272,14 +272,28 @@
   function toggleSection(id, headerElement) {
     const section = document.getElementById(id);
     const arrow = headerElement.querySelector('.arrow-icon');
-    if (section.style.display === "block") {
+    
+    const isOpen = section.style.display === "block" || section.style.display === "";
+
+    if (isOpen) {
       section.style.display = "none";
-      arrow.style.transform = "rotate(0deg)";
+      arrow.classList.remove("rotated");
     } else {
       section.style.display = "block";
-      arrow.style.transform = "rotate(180deg)";
+      arrow.classList.add("rotated");
     }
   }
+
+  // Open all collapsible sections by default on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".collapsible-content").forEach(section => {
+      section.style.display = "block";
+    });
+
+    document.querySelectorAll(".arrow-icon").forEach(icon => {
+      icon.classList.add("rotated");
+    });
+  });
 </script>
 
 {% endblock %}
