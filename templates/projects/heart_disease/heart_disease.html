@@ -158,12 +158,18 @@ function convertAge() {
 }
 
 // Collapse sections with arrow rotation
-  function toggleSection(header) {
-    const content = header.nextElementSibling;
-    const icon = header.querySelector('.toggle-btn');
-    content.style.display = content.style.display === 'block' ? 'none' : 'block';
-    icon.classList.toggle('rotate');
+function toggleSection(id, headerElement) {
+  const section = document.getElementById(id);
+  const arrow = headerElement.querySelector('.arrow-icon');
+
+  if (section.style.display === "block") {
+    section.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
+  } else {
+    section.style.display = "block";
+    arrow.style.transform = "rotate(180deg)";
   }
+}
 </script>
 
 {% endblock %}
