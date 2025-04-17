@@ -108,8 +108,10 @@ important-text {
   background-color: var(--color-primary);
 }
 
+/* Language button */
+
 .language-switcher {
-  text-align: right;
+  text-align: left;
   padding: 1rem;
 }
 
