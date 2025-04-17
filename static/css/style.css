@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Vevey';
   src: url('../fonts/vevey/vevey.otf') format('opentype');
@@ -13,20 +12,20 @@
   font-style: normal;
 }
 
-/* Palette de couleurs conservée */
+/* Color palette */
 :root {
-  --color-primary: #EE4D5A;     /* Rose punchy */
-  --color-h2: #004958;          /* Bleu-vert pour h2 */
-  --color-secondary: #666666;   /* Texte secondaire */
-  --color-bg: #FFFFFF;          /* Fond */
-  --color-btn-bg: #3B82F6;      /* Bleu vif pour boutons & nav */
-  --color-btn-text: #FFFFFF;    /* Texte des boutons */
-  --color-h3: #228B22;          /* Teinte pour h3 */
-  --color-important: #1C352D;   /* Texte important */
-  --color-jade: #00A86B;        /* Texte en jade */
+  --color-primary: #EE4D5A;     /* Main pink */
+  --color-h2: #004958;          /* Teal for h2 */
+  --color-secondary: #666666;   /* Secondary text */
+  --color-bg: #FFFFFF;          /* Background */
+  --color-btn-bg: #3B82F6;      /* Button/nav blue */
+  --color-btn-text: #FFFFFF;    /* Button text */
+  --color-h3: #006A4E;          /* Green for h3 */
+  --color-important: #1C352D;   /* Emphasis text */
+  --color-jade: #00A86B;        /* Jade color */
 }
 
-/* Styles globaux */
+/* Global body styles */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -35,7 +34,7 @@ body {
   line-height: 1.6;
 }
 
-/* En-tête et navigation */
+/* Header and navigation */
 header {
   background-color: var(--color-btn-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -79,21 +78,21 @@ header {
   color: var(--color-primary);
 }
 
-/* Conteneur principal */
+/* Main content container */
 .container {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-/* Titres et textes */
+/* Headings */
 h1 {
   font-family: 'Parisish', sans-serif;
   font-weight: normal;
   background-color: var(--color-primary);
   color: white;
   padding: 1.5rem 0;
-  font-size: 3rem; /* Size */
+  font-size: 3rem;
   margin: 0;
   text-align: center;
   width: 100vw;
@@ -109,33 +108,31 @@ h2 {
 }
 
 h3 {
-  background-color: var(--color-h3); /* h3 green */
-  color: white;                      /* white text */
+  background-color: var(--color-h3);
+  color: white;
   padding: 1rem 0;
   font-size: 1.8rem;
-  margin: 2rem 0 1rem 0;
+  margin: 0;
   text-align: center;
   width: 100vw;
   position: relative;
   left: 50%;
-  right: 50%;
   transform: translateX(-50%);
+  border-bottom: 1px solid black; /* Separator between blocks */
 }
 
-
-/* Élément important-text conservé */
+/* Highlighted text */
 important-text {
   color: var(--color-important);
   font-weight: bold;
 }
 
-/* Élément en couleur jade */
 color-jade {
   color: var(--color-jade);
   font-weight: bold;
 }
 
-/* Boutons modernes */
+/* Modern buttons */
 .btn {
   background-color: var(--color-btn-bg);
   color: var(--color-btn-text);
@@ -152,8 +149,7 @@ color-jade {
   background-color: var(--color-primary);
 }
 
-/* Language button */
-
+/* Language switch button */
 .lang-btn {
   display: inline-block;
   background-color: #007bff;
@@ -172,13 +168,13 @@ color-jade {
 
 .language-bar {
   display: flex;
-  justify-content: center;     /* centre horizontalement */
-  align-items: center;         /* centre verticalement */
-  height: 4rem;                /* ajuste selon la hauteur souhaitée */
-  margin: 1rem 0;              /* espace autour */
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  margin: 1rem 0;
 }
 
-/* Pied de page */
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem 0;
@@ -187,32 +183,32 @@ footer {
   color: var(--color-secondary);
 }
 
-/* Centered text */
+/* Centered text section */
 .centered-content {
   text-align: center;
 }
 
 .centered-content ul {
   text-align: left;
-  display: inline-block; /* important pour éviter que les ul s’étendent à 100% */
+  display: inline-block;
 }
 
-
-/* Visited links */
+/* Link behavior */
 a:visited {
-  color: var(--color-h2); /* ou autre couleur de ton thème */
+  color: var(--color-h2);
 }
 
 a {
   color: inherit;
 }
 
-/* Block wrapper */
+/* Expandable section wrapper */
 .collapsible-block {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid black; /* Thin separator line between sections */
 }
 
-/* Clickable H3 with arrow */
+/* Clickable h3 toggle header */
 .collapsible-toggle {
   background-color: var(--color-h3);
   color: white;
@@ -228,9 +224,10 @@ a {
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
+  border-bottom: 1px solid black;
 }
 
-/* Collapsible content hidden by default */
+/* Collapsible content */
 .collapsible-content {
   display: none;
   padding: 1rem;
@@ -239,21 +236,19 @@ a {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Arrow icon animation */
+/* Arrow animation */
 .arrow-icon {
   transition: transform 0.3s ease;
   font-size: 1.2rem;
 }
 
-/* Fade in animation for content */
+/* Fade animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-
-
-/* Styles responsives */
+/* Responsive layout */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;

@@ -1,12 +1,64 @@
 {% extends "base.html" %}
 {% block title %}CV - Maud Gesbert{% endblock %}
 {% block content %}
+
 <style>
-  /* Appliquer un espacement de 20px en dessous de chaque élément li dans les sections Expériences et Formation */
-  .experiences li,
-  .formations li {
-    margin-bottom: 20px;
-  }
+/* Spacing for list items */
+.experiences li,
+.formations li {
+  margin-bottom: 20px;
+}
+
+/* Expandable section styles */
+.toggle-section {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+/* Header with toggle button */
+.toggle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-h3);
+  color: white;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.toggle-header h3 {
+  margin: 0;
+}
+
+/* Content that will be collapsed */
+.toggle-content {
+  display: none;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Toggle button */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.toggle-btn.rotate {
+  transform: rotate(90deg);
+}
 </style>
 
 <h1>Mon CV</h1>
@@ -17,30 +69,52 @@
 </section><br>
 
 <section>
-  <h2>Compétences</h2><br>
-  <h3>Data Science</h3>
-  <p><important-text>Langages &amp; frameworks</important-text><br>
-  Python, MySQL, PostgreSQL, NoSQL, Git, MLFlow</p>
-  <p><important-text>Machine &amp; Deep Learning</important-text><br>
-  Régression linéaire, XGBoost, SVM, Réseaux de neurones à convolution (CNN), Traitement du langage naturel (NLP)...</p>
-  <p><important-text>Big Data &amp; Cloud</important-text><br>
-  PySpark, Hadoop, AWS</p>
-  <p><important-text>MLOps &amp; Déploiement</important-text><br>
-  Intégration Continue et Livraison Continue (CI/CD), API</p>
+  <h2>Compétences</h2>
 
-  <h3>Machine Learning engineering</h3>
-  <p>PyCharm, Jira</p>
+  <div class="toggle-section">
+    <div class="toggle-header" onclick="toggleSection(this)">
+      <h3>Data Science</h3>
+      <button class="toggle-btn">▶</button>
+    </div>
+    <div class="toggle-content">
+      <p><important-text>Langages & frameworks :</important-text><br>
+      Python, MySQL, PostgreSQL, NoSQL, Git, MLFlow</p>
+      <p><important-text>Machine & Deep Learning :</important-text><br>
+      Régression linéaire, XGBoost, SVM, CNN, NLP...</p>
+      <p><important-text>Big Data & Cloud :</important-text><br>
+      PySpark, Hadoop, AWS</p>
+      <p><important-text>MLOps & Déploiement :</important-text><br>
+      CI/CD, API</p>
+    </div>
+  </div>
 
-  <h3>Langues</h3>
-  Français (Langue Maternelle)<br>
-  Anglais (Courant)</p>
+  <div class="toggle-section">
+    <div class="toggle-header" onclick="toggleSection(this)">
+      <h3>Machine Learning Engineering</h3>
+      <button class="toggle-btn">▶</button>
+    </div>
+    <div class="toggle-content">
+      <p>PyCharm, Jira</p>
+    </div>
+  </div>
+
+  <div class="toggle-section">
+    <div class="toggle-header" onclick="toggleSection(this)">
+      <h3>Langues</h3>
+      <button class="toggle-btn">▶</button>
+    </div>
+    <div class="toggle-content">
+      <p>Français (Langue Maternelle)<br>
+      Anglais (Courant)</p>
+    </div>
+  </div>
 </section><br>
 
 <section>
   <h2>Références</h2>
-  <color-jade>Matthieu Compin</color-jade>
+  <color-jade>Matthieu Compin</color-jade><br>
   Expert Technique Espace au Commandement de l'Espace (CdE)<br><br>
-  Téléphone : 06 89 17 16 44</p>
+  Téléphone : 06 89 17 16 44
 </section><br>
 
 <section class="experiences">
