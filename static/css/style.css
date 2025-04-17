@@ -1,15 +1,8 @@
 
 @font-face {
-  font-family: 'Vanity';
-  src: url('../fonts/vanity/Vanity-Light.ttf') format('opentype');
+  font-family: 'Matilde';
+  src: url('../fonts/matilde/matilde.otf') format('opentype');
   font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Vanity';
-  src: url('../fonts/vanity/Vanity-Bold.ttf') format('opentype');
-  font-weight: bold;
   font-style: normal;
 }
 
@@ -88,8 +81,8 @@ header {
 
 /* Titres et textes */
 h1 {
-  font-family: 'Vanity', sans-serif;
-  font-weight: bold; /* Vanity-Bold */
+  font-family: 'Matilde', sans-serif;
+  font-weight: normal; /* matilde font */
   background-color: var(--color-primary);
   color: white;
   padding: 1.5rem 0;
