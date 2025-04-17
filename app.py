@@ -13,9 +13,10 @@ def home():
 def cv():
     return render_template("cv/cv.html")
 
-@app.route("/projects/heart_disease", methods=["GET", "POST"])
+app.route("/projects/heart_disease", methods=["GET", "POST"])
 def heart_disease():
     prediction = None
+    lang = request.args.get("lang") or request.form.get("lang") or "fr"
 
     if request.method == "POST":
         try:
@@ -33,31 +34,37 @@ def heart_disease():
                 int(request.form["DiffWalk"]),
             ]
 
-            # Colonnes attendues par le modèle
             columns = [
                 "GenHlth", "Age", "Stroke", "Sex", "HighChol",
                 "HighBP", "Diabetes", "PhysHlth", "BMI", "DiffWalk"
             ]
 
-            # Convertir en DataFrame
             input_data = pd.DataFrame([features], columns=columns)
 
-            # Charger le modèle
             model_path = os.path.join("templates", "projects", "heart_disease", "heart_disease_cart_pipeline.pkl")
             with open(model_path, "rb") as f:
                 model = pickle.load(f)
 
-            # Prédire
             prediction_result = model.predict(input_data)[0]
-            prediction = (
-                "✅ Risque de maladie cardiaque détecté"
-                if prediction_result == 1
-                else "✅ Aucun risque de maladie cardiaque détecté"
-            )
+            if lang == "en":
+                prediction = (
+                    "✅ Risk of heart disease detected"
+                    if prediction_result == 1
+                    else "✅ No heart disease risk detected"
+                )
+            else:
+                prediction = (
+                    "✅ Risque de maladie cardiaque détecté"
+                    if prediction_result == 1
+                    else "✅ Aucun risque de maladie cardiaque détecté"
+                )
 
         except Exception as e:
-            prediction = f"❌ Erreur lors de la prédiction : {e}"
+            prediction = f"❌ Error during prediction: {e}" if lang == "en" else f"❌ Erreur lors de la prédiction : {e}"
 
+    # Choisir le bon fichier HTML selon la langue
+    if lang == "en":
+        return render_template("projects/heart_disease/heart_disease_en.html", prediction=prediction)
     return render_template("projects/heart_disease/heart_disease.html", prediction=prediction)
 
 @app.route("/projects/<project>")

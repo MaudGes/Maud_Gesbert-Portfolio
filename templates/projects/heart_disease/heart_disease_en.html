@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block title %}Projet : Heart Disease{% endblock %}
+{% block content %}
+
+<a href="{{ url_for('heart_disease', lang='fr') }}">Français</a>
+
+<h1>Possibility of Developing Heart Disease or Having a Heart Attack</h1>
+
+<p>
+    <h3>Description:</h3>
+    Personal project based on a dataset from the CDC (US Centers for Disease Control and Prevention),
+    an American agency dedicated to the prevention of diseases, injuries, and disabilities.<br>
+    Participants in this heart disease study were asked questions about their health
+    and whether they had ever had cardiovascular disease or a heart attack.
+    Using these answers, I was able to test and create a machine learning model that predicts
+    whether a person is at risk of developing heart disease based on various health criteria.<br>
+
+    The questions below reflect those asked by the CDC during their heart disease study.<br>
+
+    Feel free to try it out!<br>
+
+    Note: In compliance with GDPR, the data you provide is not stored;
+    it is automatically deleted when the page is exited or reloaded.
+</p><br>
+
+<h3>Questions:</h3>
+
+<form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
+
+  <!-- Hidden field to keep the same language -->
+  <input type="hidden" name="lang" value="{{ request.args.get('lang', 'fr') }}">
+
+  <!-- General Health -->
+  <label><important-text>How would you rate your general health?</important-text>
+    <select name="GenHlth" required>
+      <option value="1">1 - Excellent</option>
+      <option value="2">2 - Good</option>
+      <option value="3">3 - Fair</option>
+      <option value="4">4 - Poor</option>
+      <option value="5">5 - Very poor</option>
+    </select>
+  </label><br><br>
+
+  <!-- Real Age -->
+  <label><important-text>What is your age?</important-text>
+    <input type="number" id="real_age" min="18" max="120" required>
+    <input type="hidden" name="Age" id="Age">
+  </label><br><br>
+
+  <!-- Binary & Categorical -->
+  <label><important-text>Have you ever had a stroke?</important-text>
+    <select name="Stroke" required>
+      <option value="0">0 - No</option>
+      <option value="1">1 - Yes</option>
+    </select>
+  </label><br><br>
+
+  <label><important-text>What is your sex?</important-text>
+    <select name="Sex" required>
+      <option value="0">0 - Female</option>
+      <option value="1">1 - Male</option>
+    </select>
+  </label><br><br>
+
+  <label><important-text>Do you have high cholesterol?</important-text>
+    <select name="HighChol" required>
+      <option value="0">0 - No</option>
+      <option value="1">1 - Yes</option>
+    </select>
+  </label><br><br>
+
+  <label><important-text>Do you have high blood pressure?</important-text>
+    <select name="HighBP" required>
+      <option value="0">0 - No</option>
+      <option value="1">1 - Yes</option>
+    </select>
+  </label><br><br>
+
+  <label><important-text>Do you have diabetes?</important-text>
+    <select name="Diabetes" required>
+      <option value="0">0 - No / Only during pregnancy</option>
+      <option value="1">1 - Pre-diabetes</option>
+      <option value="2">2 - Yes</option>
+    </select>
+  </label><br><br>
+
+  <!-- Physical Health -->
+  <label><important-text>How many days of poor physical health have you had in the last 30 days?</important-text>
+    <input type="number" name="PhysHlth" min="0" max="30" required>
+  </label><br><br>
+
+  <!-- BMI -->
+  <label><important-text>What is your BMI?</important-text>
+    <select name="BMI" required>
+      {% for i in range(12, 99) %}
+        <option value="{{ i }}">{{ i }}</option>
+      {% endfor %}
+    </select>
+  </label><br><br>
+
+  <!-- Difficulty Walking -->
+  <label><important-text>Do you have difficulty walking or climbing stairs?</important-text>
+    <select name="DiffWalk" required>
+      <option value="0">0 - No</option>
+      <option value="1">1 - Yes</option>
+    </select>
+  </label><br><br>
+
+  <button type="submit" class="btn">Predict</button>
+</form>
+
+{% if prediction is defined %}
+  <h2>Prediction Result:</h2>
+  <p>{{ prediction }}</p>
+{% endif %} <br>
+
+<h3>Model Creation Steps:</h3>
+
+<div class="mt-4" style="height:600px; overflow:auto;">
+  <object
+    data="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}"
+    type="application/pdf"
+    width="100%"
+    height="100%">
+    <p>If your browser does not support PDF display.
+       <a href="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}">
+         Download the PDF
+       </a>
+    </p>
+  </object>
+</div>
+
+<br><a href="/" class="btn">Back to Home</a>
+
+<!-- JS: convert real age to age class -->
+<script>
+function convertAge() {
+  const realAge = parseInt(document.getElementById('real_age').value);
+  const ageField = document.getElementById('Age');
+
+  if (realAge < 18 || realAge > 120) {
+    alert("Please enter an age between 18 and 120.");
+    return false;
+  }
+
+  const ageClass = Math.min(Math.floor((realAge - 18) / 5) + 1, 13);
+  ageField.value = ageClass;
+  return true;
+}
+</script>
+{% endblock %}

@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Projet : Heart Disease{% endblock %}
 {% block content %}
+
+<a href="{{ url_for('heart_disease', lang='en') }}">English</a>
+
 <h1>Possibilité de développer une maladie cardiaque, ou de faire une crise cardiaque</h1>
 
 <p>
-    <h3>Description</h3>
+    <h3>Description :</h3>
     Projet personnel basé sur un jeu de données du CDC (US Centers for Disease Control and Prevention),
     une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
     Les participants à cette étude sur les maladies cardiaques devaient répondre à des questions sur leur santé,
@@ -21,9 +24,12 @@
     elle sont automatiquement détruites lorsque la page est quittée ou rechargée.
 </p><br>
 
-<h3>Questions</h3>
+<h3>Questions :</h3>
 
 <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
+
+  <!-- Hidden field to keep the same language -->
+  <input type="hidden" name="lang" value="{{ request.args.get('lang', 'fr') }}">
 
   <!-- General Health -->
   <label><important-text>Comment estimez-vous votre état de santé général ?</important-text>
