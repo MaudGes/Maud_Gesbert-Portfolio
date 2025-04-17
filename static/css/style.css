@@ -82,11 +82,11 @@ header {
 /* Titres et textes */
 h1 {
   font-family: 'Matilde', sans-serif;
-  font-weight: normal; /* matilde font */
+  font-weight: normal;
   background-color: var(--color-primary);
   color: white;
   padding: 1.5rem 0;
-  font-size: 2rem;
+  font-size: 3rem; /* Size */
   margin: 0;
   text-align: center;
   width: 100vw;
