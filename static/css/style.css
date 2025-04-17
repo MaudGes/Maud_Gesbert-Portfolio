@@ -8,6 +8,7 @@
   --color-btn-text: #FFFFFF;    /* Texte des boutons */
   --color-h3: #228B22;          /* Teinte pour h3 */
   --color-important: #1C352D;   /* Texte important */
+  --color-jade: #00A86B;        /* Texte en jade */
 }
 
 /* Styles globaux */
@@ -72,8 +73,17 @@ header {
 
 /* Titres et textes */
 h1 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 1.5rem 0;
+  font-size: 2rem;
+  margin: 0;
+  text-align: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
 }
 
 h2 {
@@ -88,6 +98,12 @@ h3 {
 /* Élément important-text conservé */
 important-text {
   color: var(--color-important);
+  font-weight: bold;
+}
+
+/* Élément en couleur jade */
+jade-color {
+  color: var(--color-jade);
   font-weight: bold;
 }
 
