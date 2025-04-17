@@ -146,6 +146,14 @@ jade-color {
   background-color: #0056b3;
 }
 
+.language-bar {
+  display: flex;
+  justify-content: center;     /* centre horizontalement */
+  align-items: center;         /* centre verticalement */
+  height: 4rem;                /* ajuste selon la hauteur souhaitée */
+  margin: 1rem 0;              /* espace autour */
+}
+
 /* Pied de page */
 footer {
   text-align: center;
