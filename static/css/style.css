@@ -176,6 +176,16 @@ footer {
   color: var(--color-secondary);
 }
 
+/* Centered text */
+.centered-content {
+  text-align: center;
+}
+
+/* Visited links */
+a:visited {
+  color: var(--color-h2); /* ou autre couleur de ton thème */
+}
+
 /* Styles responsives */
 @media (max-width: 768px) {
   .nav-container {
