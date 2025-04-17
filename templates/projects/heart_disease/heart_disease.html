@@ -4,13 +4,13 @@
 
 <h1>Possibilité de développer une maladie cardiaque, ou de faire une crise cardiaque</h1>
 
-<!-- Collapsible section: Description -->
-<div class="toggle-section">
-  <div class="toggle-header" onclick="toggleSection(this)">
-    <h3>Description</h3>
-    <button class="toggle-btn">▶</button>
-  </div>
-  <div class="toggle-content">
+<!-- Collapsible: Description -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('description-section', this)">
+    Description
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="description-section" class="collapsible-content">
     <p>
       Projet personnel basé sur un jeu de données du CDC (US Centers for Disease Control and Prevention),
       une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
@@ -22,16 +22,14 @@
   </div>
 </div>
 
-
-<div class="toggle-section">
-  <div class="toggle-header" onclick="toggleSection(this)">
-    <h3>Questions</h3>
-    <button class="toggle-btn">▶</button>
-  </div>
-  <div class="toggle-content">
+<!-- Collapsible: Questions -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('questions-section', this)">
+    Questions
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="questions-section" class="collapsible-content">
     <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
-
-      <!-- Hidden language field -->
       <input type="hidden" name="lang" value="{{ request.args.get('lang', 'fr') }}">
 
       <!-- Questions -->
@@ -108,7 +106,6 @@
       <button type="submit" class="btn">Prédire</button>
     </form>
 
-    <!-- Prediction result displayed inside the collapsible section -->
     {% if prediction is defined %}
       <hr style="margin: 2rem 0;">
       <h2>Résultat de la prédiction :</h2>
@@ -117,14 +114,13 @@
   </div>
 </div>
 
-
-<!-- Collapsible section: PDF document -->
-<div class="toggle-section">
-  <div class="toggle-header" onclick="toggleSection(this)">
-    <h3>Étapes de création du modèle</h3>
-    <button class="toggle-btn">▶</button>
-  </div>
-  <div class="toggle-content">
+<!-- Collapsible: PDF -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('pdf-section', this)">
+    Étapes de création du modèle
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="pdf-section" class="collapsible-content">
     <div class="mt-4" style="height:600px; overflow:auto;">
       <object
         data="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}"
@@ -141,7 +137,6 @@
 
 <br><a href="/" class="btn">Retour à l'accueil</a>
 
-<!-- Convert age script -->
 <script>
 function convertAge() {
   const realAge = parseInt(document.getElementById('real_age').value);
@@ -157,7 +152,7 @@ function convertAge() {
   return true;
 }
 
-// Collapse sections with arrow rotation
+// Toggle sections with animation
 function toggleSection(id, headerElement) {
   const section = document.getElementById(id);
   const arrow = headerElement.querySelector('.arrow-icon');
