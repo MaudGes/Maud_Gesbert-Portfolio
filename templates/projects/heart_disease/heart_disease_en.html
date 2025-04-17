@@ -1,136 +1,145 @@
 {% extends "base.html" %}
-{% block title %}Projet : Heart Disease{% endblock %}
+{% block title %}Project: Heart Disease{% endblock %}
 {% block content %}
 
 <h1>Possibility of developing a heart disease or having a heart attack</h1>
 
-<p>
-    <h3>Description:</h3>
-    Personal project based on a dataset from the CDC (US Centers for Disease Control and Prevention),
-    an American agency dedicated to the prevention of diseases, injuries, and disabilities.<br>
-    Participants in this heart disease study were asked questions about their health
-    and whether they had ever had cardiovascular disease or a heart attack.
-    Using these answers, I was able to test and create a machine learning model that predicts
-    whether a person is at risk of developing heart disease based on various health criteria.<br>
+<!-- Collapsible: Description -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('description-section', this)">
+    Description
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="description-section" class="collapsible-content">
+    <p>
+      Personal project based on a dataset from the CDC (US Centers for Disease Control and Prevention),
+      an American agency dedicated to the prevention of diseases, injuries, and disabilities.<br>
+      Participants in this heart disease study were asked about their health
+      and whether they had ever had cardiovascular disease or a heart attack.<br>
+      Based on their answers, I built a machine learning model to predict the risk of developing heart disease.<br><br>
+      Note: In compliance with GDPR, the data you provide is not stored;
+      it is automatically deleted when the page is exited or reloaded.
+    </p>
+  </div>
+</div>
 
-    The questions below reflect those asked by the CDC during their heart disease study.<br>
+<!-- Collapsible: Questions -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('questions-section', this)">
+    Questions
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="questions-section" class="collapsible-content">
+    <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
+      <input type="hidden" name="lang" value="{{ request.args.get('lang', 'en') }}">
 
-    Feel free to try it out!<br>
+      <label><important-text>How would you rate your general health?</important-text>
+        <select name="GenHlth" required>
+          <option value="1">1 - Excellent</option>
+          <option value="2">2 - Good</option>
+          <option value="3">3 - Fair</option>
+          <option value="4">4 - Poor</option>
+          <option value="5">5 - Very poor</option>
+        </select>
+      </label><br><br>
 
-    Note: In compliance with GDPR, the data you provide is not stored;
-    it is automatically deleted when the page is exited or reloaded.
-</p><br>
+      <label><important-text>What is your age?</important-text>
+        <input type="number" id="real_age" min="18" max="120" required>
+        <input type="hidden" name="Age" id="Age">
+      </label><br><br>
 
-<h3>Questions:</h3>
+      <label><important-text>Have you ever had a stroke?</important-text>
+        <select name="Stroke" required>
+          <option value="0">0 - No</option>
+          <option value="1">1 - Yes</option>
+        </select>
+      </label><br><br>
 
-<form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
+      <label><important-text>What is your sex?</important-text>
+        <select name="Sex" required>
+          <option value="0">0 - Female</option>
+          <option value="1">1 - Male</option>
+        </select>
+      </label><br><br>
 
-  <!-- Hidden field to keep the same language -->
-  <input type="hidden" name="lang" value="{{ request.args.get('lang', 'fr') }}">
+      <label><important-text>Do you have high cholesterol?</important-text>
+        <select name="HighChol" required>
+          <option value="0">0 - No</option>
+          <option value="1">1 - Yes</option>
+        </select>
+      </label><br><br>
 
-  <!-- General Health -->
-  <label><important-text>How would you rate your general health?</important-text>
-    <select name="GenHlth" required>
-      <option value="1">1 - Excellent</option>
-      <option value="2">2 - Good</option>
-      <option value="3">3 - Fair</option>
-      <option value="4">4 - Poor</option>
-      <option value="5">5 - Very poor</option>
-    </select>
-  </label><br><br>
+      <label><important-text>Do you have high blood pressure?</important-text>
+        <select name="HighBP" required>
+          <option value="0">0 - No</option>
+          <option value="1">1 - Yes</option>
+        </select>
+      </label><br><br>
 
-  <!-- Real Age -->
-  <label><important-text>What is your age?</important-text>
-    <input type="number" id="real_age" min="18" max="120" required>
-    <input type="hidden" name="Age" id="Age">
-  </label><br><br>
+      <label><important-text>Do you have diabetes?</important-text>
+        <select name="Diabetes" required>
+          <option value="0">0 - No / Only during pregnancy</option>
+          <option value="1">1 - Pre-diabetes</option>
+          <option value="2">2 - Yes</option>
+        </select>
+      </label><br><br>
 
-  <!-- Binary & Categorical -->
-  <label><important-text>Have you ever had a stroke?</important-text>
-    <select name="Stroke" required>
-      <option value="0">0 - No</option>
-      <option value="1">1 - Yes</option>
-    </select>
-  </label><br><br>
+      <label><important-text>How many days of poor physical health in the past 30 days?</important-text>
+        <input type="number" name="PhysHlth" min="0" max="30" required>
+      </label><br><br>
 
-  <label><important-text>What is your sex?</important-text>
-    <select name="Sex" required>
-      <option value="0">0 - Female</option>
-      <option value="1">1 - Male</option>
-    </select>
-  </label><br><br>
+      <label><important-text>What is your BMI?</important-text>
+        <select name="BMI" required>
+          {% for i in range(12, 99) %}
+            <option value="{{ i }}">{{ i }}</option>
+          {% endfor %}
+        </select>
+      </label><br><br>
 
-  <label><important-text>Do you have high cholesterol?</important-text>
-    <select name="HighChol" required>
-      <option value="0">0 - No</option>
-      <option value="1">1 - Yes</option>
-    </select>
-  </label><br><br>
+      <label><important-text>Do you have difficulty walking or climbing stairs?</important-text>
+        <select name="DiffWalk" required>
+          <option value="0">0 - No</option>
+          <option value="1">1 - Yes</option>
+        </select>
+      </label><br><br>
 
-  <label><important-text>Do you have high blood pressure?</important-text>
-    <select name="HighBP" required>
-      <option value="0">0 - No</option>
-      <option value="1">1 - Yes</option>
-    </select>
-  </label><br><br>
+      <button type="submit" class="btn">Predict</button>
+    </form>
+  </div>
+</div>
 
-  <label><important-text>Do you have diabetes?</important-text>
-    <select name="Diabetes" required>
-      <option value="0">0 - No / Only during pregnancy</option>
-      <option value="1">1 - Pre-diabetes</option>
-      <option value="2">2 - Yes</option>
-    </select>
-  </label><br><br>
-
-  <!-- Physical Health -->
-  <label><important-text>How many days of poor physical health have you had in the last 30 days?</important-text>
-    <input type="number" name="PhysHlth" min="0" max="30" required>
-  </label><br><br>
-
-  <!-- BMI -->
-  <label><important-text>What is your BMI?</important-text>
-    <select name="BMI" required>
-      {% for i in range(12, 99) %}
-        <option value="{{ i }}">{{ i }}</option>
-      {% endfor %}
-    </select>
-  </label><br><br>
-
-  <!-- Difficulty Walking -->
-  <label><important-text>Do you have difficulty walking or climbing stairs?</important-text>
-    <select name="DiffWalk" required>
-      <option value="0">0 - No</option>
-      <option value="1">1 - Yes</option>
-    </select>
-  </label><br><br>
-
-  <button type="submit" class="btn">Predict</button>
-</form>
-
+<!-- Prediction Result -->
 {% if prediction is defined %}
   <h2>Prediction Result:</h2>
   <p>{{ prediction }}</p>
-{% endif %} <br>
+{% endif %}
 
-<h3>Model Creation Steps:</h3>
-
-<div class="mt-4" style="height:600px; overflow:auto;">
-  <object
-    data="{{ url_for('static', filename='images/Heart_Disease_PPT.pdf') }}"
-    type="application/pdf"
-    width="100%"
-    height="100%">
-    <p>If your browser does not support PDF display.
-       <a href="{{ url_for('static', filename='images/Heart_Disease_PPT.pdf') }}">
-         Download the PDF
-       </a>
-    </p>
-  </object>
+<!-- Collapsible: PDF -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('pdf-section', this)">
+    Model Creation Steps
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="pdf-section" class="collapsible-content">
+    <div class="mt-4" style="height:600px; overflow:auto;">
+      <object
+        data="{{ url_for('static', filename='images/Heart_Disease_PPT.pdf') }}"
+        type="application/pdf"
+        width="100%"
+        height="100%">
+        <p>If your browser doesn't support PDF view.
+          <a href="{{ url_for('static', filename='images/Heart_Disease_PPT.pdf') }}">
+            Download the PDF
+          </a>
+        </p>
+      </object>
+    </div>
+  </div>
 </div>
 
 <br><a href="/" class="btn">Back to Home</a>
 
-<!-- JS: convert real age to age class -->
+<!-- Convert age to class -->
 <script>
 function convertAge() {
   const realAge = parseInt(document.getElementById('real_age').value);
@@ -145,5 +154,20 @@ function convertAge() {
   ageField.value = ageClass;
   return true;
 }
+
+// Toggle collapsible sections
+function toggleSection(id, headerElement) {
+  const section = document.getElementById(id);
+  const arrow = headerElement.querySelector('.arrow-icon');
+
+  if (section.style.display === "block") {
+    section.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
+  } else {
+    section.style.display = "block";
+    arrow.style.transform = "rotate(180deg)";
+  }
+}
 </script>
+
 {% endblock %}

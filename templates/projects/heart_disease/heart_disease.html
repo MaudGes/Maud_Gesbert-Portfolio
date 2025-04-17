@@ -4,134 +4,142 @@
 
 <h1>Possibilité de développer une maladie cardiaque, ou de faire une crise cardiaque</h1>
 
-<p>
-    <h3>Description :</h3>
-    Projet personnel basé sur un jeu de données du CDC (US Centers for Disease Control and Prevention),
-    une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
-    Les participants à cette étude sur les maladies cardiaques devaient répondre à des questions sur leur santé,
-    et indiquer s'il avait déjà contracté une maladie cardio-vasculaire ou fait une crise cardiaque.
-    En utilisant ces réponses, j'ai pu tester et créer un modèle de machine learning qui permet de prédire
-    si une personne est à risque de développer une maladie cardiaque en se basant sur différents critères
-    de santé.<br>
+<!-- Collapsible section: Description -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('description-section', this)">
+    Description
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="description-section" class="collapsible-content">
+    <p>
+      Projet personnel basé sur un jeu de données du CDC (US Centers for Disease Control and Prevention),
+      une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
+      Les participants à cette étude devaient répondre à des questions sur leur santé, et indiquer s'ils avaient déjà
+      eu une maladie cardiaque ou une crise cardiaque.<br>
+      Un modèle de machine learning a été construit pour prédire le risque à partir de leurs réponses.<br><br>
+      NB : Les données ne sont pas conservées et sont supprimées à la fermeture ou au rechargement de la page.
+    </p>
+  </div>
+</div>
 
-    Les questions ci-dessous reprennent les questions posées par le CDC lors de leur étude sur les maladies cardiaques.<br>
+<!-- Collapsible section: Questions -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('questions-section', this)">
+    Questions
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="questions-section" class="collapsible-content">
+    <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
 
-    N'hésitez pas à essayer !<br>
+      <!-- Hidden language field -->
+      <input type="hidden" name="lang" value="{{ request.args.get('lang', 'fr') }}">
 
-    NB : Pour respecter le cadre RGPD, les données que vous fournissez ne sont pas conservées, 
-    elle sont automatiquement détruites lorsque la page est quittée ou rechargée.
-</p><br>
+      <!-- Questions (as before) -->
+      <label><important-text>Comment estimez-vous votre état de santé général ?</important-text>
+        <select name="GenHlth" required>
+          <option value="1">1 - Excellent</option>
+          <option value="2">2 - Bon</option>
+          <option value="3">3 - Moyen</option>
+          <option value="4">4 - Mauvais</option>
+          <option value="5">5 - Très mauvais</option>
+        </select>
+      </label><br><br>
 
-<h3>Questions :</h3>
+      <label><important-text>Quel est votre âge ?</important-text>
+        <input type="number" id="real_age" min="18" max="120" required>
+        <input type="hidden" name="Age" id="Age">
+      </label><br><br>
 
-<form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
+      <label><important-text>Avez-vous déjà fait un AVC ?</important-text>
+        <select name="Stroke" required>
+          <option value="0">0 - Non</option>
+          <option value="1">1 - Oui</option>
+        </select>
+      </label><br><br>
 
-  <!-- Hidden field to keep the same language -->
-  <input type="hidden" name="lang" value="{{ request.args.get('lang', 'fr') }}">
+      <label><important-text>Quel est votre sexe ?</important-text>
+        <select name="Sex" required>
+          <option value="0">0 - Femme</option>
+          <option value="1">1 - Homme</option>
+        </select>
+      </label><br><br>
 
-  <!-- General Health -->
-  <label><important-text>Comment estimez-vous votre état de santé général ?</important-text>
-    <select name="GenHlth" required>
-      <option value="1">1 - Excellent</option>
-      <option value="2">2 - Bon</option>
-      <option value="3">3 - Moyen</option>
-      <option value="4">4 - Mauvais</option>
-      <option value="5">5 - Très mauvais</option>
-    </select>
-  </label><br><br>
+      <label><important-text>Avez-vous un taux de cholestérol élevé ?</important-text>
+        <select name="HighChol" required>
+          <option value="0">0 - Non</option>
+          <option value="1">1 - Oui</option>
+        </select>
+      </label><br><br>
 
-  <!-- Âge réel -->
-  <label><important-text>Quel est votre âge ?</important-text>
-    <input type="number" id="real_age" min="18" max="120" required>
-    <input type="hidden" name="Age" id="Age">
-  </label><br><br>
+      <label><important-text>Avez-vous de l'hypertension ?</important-text>
+        <select name="HighBP" required>
+          <option value="0">0 - Non</option>
+          <option value="1">1 - Oui</option>
+        </select>
+      </label><br><br>
 
-  <!-- Binaire & catégoriques -->
-  <label><important-text>Avez-vous du déjà fait un AVC ?</important-text>
-    <select name="Stroke" required>
-      <option value="0">0 - Non</option>
-      <option value="1">1 - Oui</option>
-    </select>
-  </label><br><br>
+      <label><important-text>Avez-vous du diabète ?</important-text>
+        <select name="Diabetes" required>
+          <option value="0">0 - Non / Uniquement pendant grossesse</option>
+          <option value="1">1 - Pré-diabète</option>
+          <option value="2">2 - Oui</option>
+        </select>
+      </label><br><br>
 
-  <label><important-text>Quel est votre sexe ?</important-text>
-    <select name="Sex" required>
-      <option value="0">0 - Femme</option>
-      <option value="1">1 - Homme</option>
-    </select>
-  </label><br><br>
+      <label><important-text>Combien de jours de mauvaise santé physique sur les 30 derniers jours ?</important-text>
+        <input type="number" name="PhysHlth" min="0" max="30" required>
+      </label><br><br>
 
-  <label><important-text>Avez-vous un taux de cholestérol élevé ?</important-text>
-    <select name="HighChol" required>
-      <option value="0">0 - Non</option>
-      <option value="1">1 - Oui</option>
-    </select>
-  </label><br><br>
+      <label><important-text>Quel est votre IMC ?</important-text>
+        <select name="BMI" required>
+          {% for i in range(12, 99) %}
+            <option value="{{ i }}">{{ i }}</option>
+          {% endfor %}
+        </select>
+      </label><br><br>
 
-  <label><important-text>Avez-vous de l'hypertension ?</important-text>
-    <select name="HighBP" required>
-      <option value="0">0 - Non</option>
-      <option value="1">1 - Oui</option>
-    </select>
-  </label><br><br>
+      <label><important-text>Difficultés à marcher ou monter des escaliers ?</important-text>
+        <select name="DiffWalk" required>
+          <option value="0">0 - Non</option>
+          <option value="1">1 - Oui</option>
+        </select>
+      </label><br><br>
 
-  <label><important-text>Avez-vous du diabète ?</important-text>
-    <select name="Diabetes" required>
-      <option value="0">0 - Non / Uniquement pendant grossesse </option>
-      <option value="1">1 - Pré-diabète</option>
-      <option value="2">2 - Oui</option>
-    </select>
-  </label><br><br>
+      <button type="submit" class="btn">Prédire</button>
+    </form>
+  </div>
+</div>
 
-  <!-- Santé physique -->
-  <label><important-text>A combien estimez-vous le nombre de jours de mauvaise santé physique sur les 30 derniers jours ?</important-text>
-    <input type="number" name="PhysHlth" min="0" max="30" required>
-  </label><br><br>
-
-  <!-- IMC : menu déroulant 12 à 98 -->
-  <label><important-text>Quel est votre IMC ?</important-text>
-    <select name="BMI" required>
-      {% for i in range(12, 99) %}
-        <option value="{{ i }}">{{ i }}</option>
-      {% endfor %}
-    </select>
-  </label><br><br>
-
-  <!-- Difficulté à marcher -->
-  <label><important-text>Eprouvez-vous des difficultés à marcher ou à monter les escaliers ?</important-text>
-    <select name="DiffWalk" required>
-      <option value="0">0 - Non </option>
-      <option value="1">1 - Oui</option>
-    </select>
-  </label><br><br>
-
-  <button type="submit" class="btn">Prédire</button>
-</form>
-
+<!-- Display prediction if available -->
 {% if prediction is defined %}
   <h2>Résultat de la prédiction :</h2>
   <p>{{ prediction }}</p>
-{% endif %} <br>
+{% endif %}
 
-<h3>Etapes de création du modèle :</h3>
-
-<div class="mt-4" style="height:600px; overflow:auto;">
-  <object
-    data="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}"
-    type="application/pdf"
-    width="100%"
-    height="100%">
-    <p>Si le navigateur ne supporte pas l’affichage des PDF. 
-       <a href="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}">
-         Télécharger le PDF
-       </a>
-    </p>
-  </object>
+<!-- Collapsible section: PDF document -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('pdf-section', this)">
+    Etapes de création du modèle
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="pdf-section" class="collapsible-content">
+    <div class="mt-4" style="height:600px; overflow:auto;">
+      <object
+        data="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}"
+        type="application/pdf"
+        width="100%"
+        height="100%">
+        <p>Si le navigateur ne supporte pas les PDF :
+           <a href="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}">Télécharger le PDF</a>
+        </p>
+      </object>
+    </div>
+  </div>
 </div>
 
 <br><a href="/" class="btn">Retour à l'accueil</a>
 
-<!-- JS : conversion âge réel vers classe d'âge -->
+<!-- Convert age script -->
 <script>
 function convertAge() {
   const realAge = parseInt(document.getElementById('real_age').value);
@@ -146,5 +154,20 @@ function convertAge() {
   ageField.value = ageClass;
   return true;
 }
+
+// Collapse sections with arrow rotation
+function toggleSection(id, headerElement) {
+  const section = document.getElementById(id);
+  const arrow = headerElement.querySelector('.arrow-icon');
+
+  if (section.style.display === "block") {
+    section.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
+  } else {
+    section.style.display = "block";
+    arrow.style.transform = "rotate(180deg)";
+  }
+}
 </script>
+
 {% endblock %}
