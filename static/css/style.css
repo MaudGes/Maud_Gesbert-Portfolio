@@ -6,6 +6,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Parisish';
+  src: url('../fonts/parisish/parisish.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Palette de couleurs conservée */
 :root {
   --color-primary: #EE4D5A;     /* Rose punchy */
@@ -81,12 +88,12 @@ header {
 
 /* Titres et textes */
 h1 {
-  font-family: 'Vevey', sans-serif;
+  font-family: 'Parisish', sans-serif;
   font-weight: normal;
   background-color: var(--color-primary);
   color: white;
   padding: 1.5rem 0;
-  font-size: 5rem; /* Size */
+  font-size: 3rem; /* Size */
   margin: 0;
   text-align: center;
   width: 100vw;
