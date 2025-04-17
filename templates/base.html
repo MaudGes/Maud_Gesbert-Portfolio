@@ -27,6 +27,7 @@
     </nav>
   </header>
 
+  {% set lang = request.args.get('lang', 'fr') %}
   <div class="language-switcher">
     {% if request.endpoint == 'home' %}
       <a href="{{ url_for('home', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
@@ -40,10 +41,15 @@
       <a href="{{ url_for('cv', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
         {{ 'English' if lang == 'fr' else 'Français' }}
       </a>
-      {% else %}
-      <!-- Pas de bouton langue pour les autres pages (ou à ajouter selon besoin) -->
+    {% elif request.endpoint == 'show_project' and request.view_args.project == 'lite' %}
+      <a href="{{ url_for('show_project', project='lite', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
+        {{ 'English' if lang == 'fr' else 'Français' }}
+      </a>
+    {% else %}
+      <!-- Autres pages à ajouter ici -->
     {% endif %}
   </div>
+  
 
   <main class="container">
     {% block content %}{% endblock %}
