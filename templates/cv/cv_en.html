@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% block title %}CV - Maud Gesbert{% endblock %}
+{% block content %}
+<style>
+  /* Apply 20px spacing below each li element in the Experience and Education sections */
+  .experiences li,
+  .formations li {
+    margin-bottom: 20px;
+  }
+</style>
+
+<h1>My Resume</h1>
+
+<section>
+  <h2>Profile</h2>
+  <p>Data Scientist passionate about data analysis, modeling, and value creation.</p>
+</section><br>
+
+<section>
+  <h2>Skills</h2><br>
+  <h3>Data Science:</h3>
+  <p><important-text>Languages &amp; frameworks:</important-text><br>
+  Python, MySQL, PostgreSQL, NoSQL, Git, MLFlow</p>
+  <p><important-text>Machine &amp; Deep Learning:</important-text><br>
+  Linear Regression, XGBoost, SVM, Convolutional Neural Networks (CNN), Natural Language Processing (NLP)...</p>
+  <p><important-text>Big Data &amp; Cloud:</important-text><br>
+  PySpark, Hadoop, AWS</p>
+  <p><important-text>MLOps &amp; Deployment:</important-text><br>
+  Continuous Integration and Continuous Delivery (CI/CD), APIs</p>
+
+  <h3>Machine Learning Engineering:</h3>
+  <p>PyCharm, Jira</p>
+
+  <h3>Languages:</h3>
+  French (Native)<br>
+  English (Fluent)</p>
+</section><br>
+
+<section>
+  <h2>References</h2>
+  <h3>Matthieu Compin</h3>
+  Technical Expert at French Space Command (CdE)<br><br>
+  Phone: +33 6 89 17 16 44</p>
+</section><br>
+
+<section class="experiences">
+  <h2>Work Experience</h2>
+  <ul>
+    <li>
+      <important-text>Data Scientist – French Space Command</important-text><br>
+      (Oct 2023 - Mar 2025, Toulouse, Occitanie, France)<br>
+      Work-study program<br><br>
+      Skills: Data Science · Data Analysis<br><br> 
+      <ul>
+        <li>
+          Database creation and implementation: JMerise, PostgreSQL, MongoDB.<br>
+          Data retrieval and injection into the database via Python (Airflow, API requests, scraping with Selenium).
+        </li>
+        <li>
+          Model testing and evaluation: Performance evaluation of different detection and classification models for orbital maneuvers to improve tracking. Using Python (Random Forest, Deep Neural Networks).
+        </li>
+        <li>
+          Predictive modeling: Developed a model to predict high-risk atmospheric re-entry locations using Python (Linear Regression).
+        </li>
+        <li>
+          HPC environment: Worked on the sandbox part of an HPC – Linux (Alma &amp; Debian).
+        </li>
+      </ul>
+    </li>
+    <li>
+      <important-text>Management Controller – Airbus Defence and Space</important-text><br>
+      (May 2022 - May 2023, Toulouse, Occitanie, France)<br><br>
+      Skills: Financial Management · Key Performance Indicators · Business Analysis<br><br> 
+      <ul>
+        <li>
+          Monthly margin tracking and revenue control
+        </li>
+        <li>
+          Budget vs. actuals variance analysis
+        </li>
+        <li>
+          Budget presentation for upcoming fiscal years
+        </li>
+      </ul>
+    </li>
+    <li>
+      <important-text>Financial Analyst – Amazon</important-text><br> 
+      (Aug 2020 - May 2021, Bratislava, Slovakia)<br><br>
+      Skills: Financial Management · Client Relations · Business Analysis <br><br> 
+      <ul>
+        <li>
+          Resolved issues in collaboration with Amazon suppliers to ensure timely payments
+        </li>
+        <li>
+          Worked with internal teams to ensure accurate and timely transactions
+        </li> 
+        <li>
+          Implemented process improvements to accelerate issue resolution
+        </li> 
+      </ul>
+    </li>
+    <li>
+      <important-text>Sales Engineer – Bertin Technologies</important-text><br>
+      (Oct 2018 - Nov 2019, Singapore)<br><br>
+      Skills: Client Relations · Biotech Sector · KPIs · Negotiation · Business Analysis<br><br> 
+      In the division dedicated to pharmaceutical equipment:<br>
+      <ul>
+        <li>
+          Identified new business prospects and partners (B2B and B2C)
+        </li>
+        <li>
+          Financial and commercial analysis of potential partners
+        </li>
+        <li>
+          Communication and follow-up to finalize new contracts
+        </li>
+        <li>
+          Reached out to potential clients to understand needs and present technical-commercial proposals
+        </li>
+        <li>
+          Managed and developed distributor network
+        </li>
+        <li>
+          Produced detailed reporting
+        </li>
+      </ul>
+      Three new distribution contracts were signed, generating a 30% increase in sales across the APAC region.<br>
+    </li>
+    <li>
+      <important-text>Junior Consultant – SunTseu</important-text><br>
+      (Sept 2017 - Sept 2018, Châtillon, Île-de-France)<br>
+      Skills: Requirements gathering · Client Relations · CRM: Salesforce and Veeva<br><br> 
+      Within the Life Sciences Practice:<br>
+      <ul>
+        <li>
+          Gathered business requirements for a CRM software change
+        </li>
+        <li>
+          Analyzed and modeled business processes
+        </li>
+        <li>
+          Wrote specifications and functional documentation
+        </li>
+        <li>
+          Configuration and testing in Sandbox before production deployment
+        </li>
+        <li>
+          Provided change management support post-deployment
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section class="formations">
+  <h2>Education</h2>
+  <ul>
+    <li>
+      <important-text>Master’s in Data Science – OpenClassrooms &amp; CentraleSupélec</important-text><br>(Oct 2023 - Mar 2025)<br><br>
+      Skills: Data Science · Data Analysis · Statistical Analysis<br><br> 
+
+      Languages &amp; frameworks:<br>
+      Python, SQL, NoSQL, Git, MLFlow<br><br>
+
+      Machine &amp; Deep Learning:<br>
+      XGBoost, SVM, CNN, NLP<br><br>
+
+      Big Data &amp; Cloud:<br>
+      PySpark, Hadoop, AWS<br><br>
+
+      MLOps &amp; Deployment:<br>
+      CI/CD, APIs<br><br>
+
+      Courses:<br>
+      Data collection, exploration, preparation and analysis<br>
+      Building predictive models<br>
+      Deploying data models<br>
+      Communicating results through visualizations<br>
+      Organizing and managing a data science &amp; AI project<br><br>
+
+      Projects:<br>
+      Educational data analysis<br>
+      Data preparation for a public health agency<br> 
+      Energy consumption prediction for buildings<br>
+      Customer segmentation for an e-commerce website<br>
+      Automatic classification of consumer goods based on their descriptions or images<br>
+      Development of a financial scoring model<br> 
+      Creation of an interactive dashboard<br>
+      Big Data processing on the Cloud<br> 
+      Scoping of an AI project
+    </li>
+    <li>
+      <important-text>Data Analysis Bootcamp – DataBird</important-text><br>(Feb 2023 - May 2023)<br><br>
+      Skills: GitHub, Reporting and Analysis, Statistics, ETL, Databases, Python, SQL, Tableau, Data Visualization<br><br> 
+      Activities and clubs:<br>
+      Conducted a data analysis project in partnership with a company to provide an in-depth sales analysis<br>
+      Advanced SQL data extraction and manipulation courses<br>
+      Advanced Python courses (statistical studies with Pandas and NumPy, REST API queries, scraping)<br> 
+      Visualizations using Tableau
+    </li>
+    <li>
+      <important-text>Dual MSc&amp;MA: Finance and Investments – London School of Business and Finance (LSBF)</important-text><br>(Oct 2019 - Mar 2022)<br><br>
+      Skills: Financial Analysis · KPIs<br><br> 
+      Courses:<br>
+      Business and Financial Analysis<br>
+      Advanced Corporate Finance<br>
+      Quantitative Finance and Financial Markets<br> 
+      Mergers, Acquisitions and Private Equity
+    </li>
+    <li>
+      <important-text>MBA, Biotechnology Management – Ionis-STM, Dual Competency School</important-text><br>(2015 - 2017)<br><br>
+      Skills: Statistics · Biotech Sector · KPIs · Biostatistics<br><br> 
+      Courses:<br>
+      Business Administration<br>
+      Biostatistics<br>
+      Change Management<br>
+      Corporate Finance<br>
+      Project Management in the Pharmaceutical Industry<br>
+      Strategic and Operational Marketing of Bioproducts<br>
+      Immunotechnologies
+    </li>
+    <li>
+      <important-text>Bachelor’s in Human Biology and Biotechnology – Aix-Marseille University</important-text><br>(Sept 2012 - May 2015)<br><br>
+      Skills: Biotech Sector · Biostatistics<br><br> 
+      Studied methods for generating new cell lines and genetic manipulation techniques.<br>
+    </li>
+  </ul>
+</section>
+<a href="/" class="btn">Back to home</a>
+{% endblock %}
