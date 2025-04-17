@@ -5,36 +5,36 @@
 <h1>Possibilité de développer une maladie cardiaque, ou de faire une crise cardiaque</h1>
 
 <!-- Collapsible section: Description -->
-<div class="collapsible-block">
-  <h3 class="collapsible-toggle" onclick="toggleSection('description-section', this)">
-    Description
-    <span class="arrow-icon">▼</span>
-  </h3>
-  <div id="description-section" class="collapsible-content">
+<div class="toggle-section">
+  <div class="toggle-header" onclick="toggleSection(this)">
+    <h3>Description</h3>
+    <button class="toggle-btn">▶</button>
+  </div>
+  <div class="toggle-content">
     <p>
       Projet personnel basé sur un jeu de données du CDC (US Centers for Disease Control and Prevention),
       une agence américaine dédiée à la prévention des maladies, des blessures et des handicaps.<br>
       Les participants à cette étude devaient répondre à des questions sur leur santé, et indiquer s'ils avaient déjà
       eu une maladie cardiaque ou une crise cardiaque.<br>
       Un modèle de machine learning a été construit pour prédire le risque à partir de leurs réponses.<br><br>
-      NB : Les données ne sont pas conservées et sont supprimées à la fermeture ou au rechargement de la page.
+      <strong>NB :</strong> Les données ne sont pas conservées et sont supprimées à la fermeture ou au rechargement de la page.
     </p>
   </div>
 </div>
 
-<!-- Collapsible section: Questions -->
-<div class="collapsible-block">
-  <h3 class="collapsible-toggle" onclick="toggleSection('questions-section', this)">
-    Questions
-    <span class="arrow-icon">▼</span>
-  </h3>
-  <div id="questions-section" class="collapsible-content">
+
+<div class="toggle-section">
+  <div class="toggle-header" onclick="toggleSection(this)">
+    <h3>Questions</h3>
+    <button class="toggle-btn">▶</button>
+  </div>
+  <div class="toggle-content">
     <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
 
       <!-- Hidden language field -->
       <input type="hidden" name="lang" value="{{ request.args.get('lang', 'fr') }}">
 
-      <!-- Questions (as before) -->
+      <!-- Questions -->
       <label><important-text>Comment estimez-vous votre état de santé général ?</important-text>
         <select name="GenHlth" required>
           <option value="1">1 - Excellent</option>
@@ -107,22 +107,24 @@
 
       <button type="submit" class="btn">Prédire</button>
     </form>
+
+    <!-- Prediction result displayed inside the collapsible section -->
+    {% if prediction is defined %}
+      <hr style="margin: 2rem 0;">
+      <h2>Résultat de la prédiction :</h2>
+      <p>{{ prediction }}</p>
+    {% endif %}
   </div>
 </div>
 
-<!-- Display prediction if available -->
-{% if prediction is defined %}
-  <h2>Résultat de la prédiction :</h2>
-  <p>{{ prediction }}</p>
-{% endif %}
 
 <!-- Collapsible section: PDF document -->
-<div class="collapsible-block">
-  <h3 class="collapsible-toggle" onclick="toggleSection('pdf-section', this)">
-    Etapes de création du modèle
-    <span class="arrow-icon">▼</span>
-  </h3>
-  <div id="pdf-section" class="collapsible-content">
+<div class="toggle-section">
+  <div class="toggle-header" onclick="toggleSection(this)">
+    <h3>Étapes de création du modèle</h3>
+    <button class="toggle-btn">▶</button>
+  </div>
+  <div class="toggle-content">
     <div class="mt-4" style="height:600px; overflow:auto;">
       <object
         data="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}"
@@ -130,7 +132,7 @@
         width="100%"
         height="100%">
         <p>Si le navigateur ne supporte pas les PDF :
-           <a href="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}">Télécharger le PDF</a>
+          <a href="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}">Télécharger le PDF</a>
         </p>
       </object>
     </div>
@@ -156,18 +158,12 @@ function convertAge() {
 }
 
 // Collapse sections with arrow rotation
-function toggleSection(id, headerElement) {
-  const section = document.getElementById(id);
-  const arrow = headerElement.querySelector('.arrow-icon');
-
-  if (section.style.display === "block") {
-    section.style.display = "none";
-    arrow.style.transform = "rotate(0deg)";
-  } else {
-    section.style.display = "block";
-    arrow.style.transform = "rotate(180deg)";
+  function toggleSection(header) {
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('.toggle-btn');
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    icon.classList.toggle('rotate');
   }
-}
 </script>
 
 {% endblock %}

@@ -17,7 +17,7 @@
       Participants in this heart disease study were asked about their health
       and whether they had ever had cardiovascular disease or a heart attack.<br>
       Based on their answers, I built a machine learning model to predict the risk of developing heart disease.<br><br>
-      Note: In compliance with GDPR, the data you provide is not stored;
+      <strong>Note:</strong> In compliance with GDPR, the data you provide is not stored;
       it is automatically deleted when the page is exited or reloaded.
     </p>
   </div>
@@ -105,14 +105,14 @@
 
       <button type="submit" class="btn">Predict</button>
     </form>
+
+    {% if prediction is defined %}
+      <hr style="margin: 2rem 0;">
+      <h2>Prediction Result:</h2>
+      <p>{{ prediction }}</p>
+    {% endif %}
   </div>
 </div>
-
-<!-- Prediction Result -->
-{% if prediction is defined %}
-  <h2>Prediction Result:</h2>
-  <p>{{ prediction }}</p>
-{% endif %}
 
 <!-- Collapsible: PDF -->
 <div class="collapsible-block">
