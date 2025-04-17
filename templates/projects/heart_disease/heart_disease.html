@@ -25,9 +25,9 @@
 <!-- Collapsible: Questions -->
 <div class="collapsible-block">
   <h3 class="collapsible-toggle" onclick="toggleSection('questions-section', this)">
-    Questions
+    <span class="collapsible-title">Questions</span>
     <span class="arrow-icon">▼</span>
-  </h3>
+  </h3>  
   <div id="questions-section" class="collapsible-content">
     <form method="post" action="/projects/heart_disease" onsubmit="return convertAge();">
       <input type="hidden" name="lang" value="{{ request.args.get('lang', 'fr') }}">
@@ -116,10 +116,10 @@
 
 <!-- Collapsible: PDF -->
 <div class="collapsible-block">
-  <h3 class="collapsible-toggle" onclick="toggleSection('pdf-section', this)">
-    Étapes de création du modèle
+  <h3 class="collapsible-toggle" onclick="toggleSection('questions-section', this)">
+    <span class="collapsible-title">Étapes de création du modèle</span>
     <span class="arrow-icon">▼</span>
-  </h3>
+  </h3>  
   <div id="pdf-section" class="collapsible-content">
     <div class="mt-4" style="height:600px; overflow:auto;">
       <object
