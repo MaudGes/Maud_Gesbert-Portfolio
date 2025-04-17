@@ -27,21 +27,20 @@
     </nav>
   </header>
 
-  {% set lang = request.args.get('lang', 'fr') %}
-  <div style="text-align: right; padding: 1em;">
+  <div class="language-switcher">
     {% if request.endpoint == 'home' %}
-      <a href="{{ url_for('home', lang='en' if lang == 'fr' else 'fr') }}">
+      <a href="{{ url_for('home', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
         {{ 'English' if lang == 'fr' else 'Français' }}
       </a>
     {% elif request.endpoint == 'heart_disease' %}
-      <a href="{{ url_for('heart_disease', lang='en' if lang == 'fr' else 'fr') }}">
+      <a href="{{ url_for('heart_disease', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
         {{ 'English' if lang == 'fr' else 'Français' }}
       </a>
     {% elif request.endpoint == 'cv' %}
-      <a href="{{ url_for('cv', lang='en' if lang == 'fr' else 'fr') }}">
+      <a href="{{ url_for('cv', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
         {{ 'English' if lang == 'fr' else 'Français' }}
       </a>
-    {% else %}
+      {% else %}
       <!-- Pas de bouton langue pour les autres pages (ou à ajouter selon besoin) -->
     {% endif %}
   </div>
