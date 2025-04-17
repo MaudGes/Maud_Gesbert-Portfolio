@@ -2,65 +2,6 @@
 {% block title %}CV - Maud Gesbert{% endblock %}
 {% block content %}
 
-<style>
-/* Spacing for list items */
-.experiences li,
-.formations li {
-  margin-bottom: 20px;
-}
-
-/* Expandable section styles */
-.toggle-section {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-
-/* Header with toggle button */
-.toggle-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--color-h3);
-  color: white;
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-}
-
-.toggle-header h3 {
-  margin: 0;
-}
-
-/* Content that will be collapsed */
-.toggle-content {
-  display: none;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Toggle button */
-.toggle-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.toggle-btn.rotate {
-  transform: rotate(90deg);
-}
-</style>
-
 <h1>Mon CV</h1>
 
 <section>
@@ -71,12 +12,12 @@
 <section>
   <h2>Compétences</h2>
 
-  <div class="toggle-section">
-    <div class="toggle-header" onclick="toggleSection(this)">
-      <h3>Data Science</h3>
-      <button class="toggle-btn">▶</button>
-    </div>
-    <div class="toggle-content">
+  <div class="collapsible-block">
+    <h3 class="collapsible-toggle" onclick="toggleSection('data-science', this)">
+      Data Science
+      <span class="arrow-icon">▼</span>
+    </h3>
+    <div id="data-science" class="collapsible-content">
       <p><important-text>Langages & frameworks :</important-text><br>
       Python, MySQL, PostgreSQL, NoSQL, Git, MLFlow</p>
       <p><important-text>Machine & Deep Learning :</important-text><br>
@@ -88,22 +29,22 @@
     </div>
   </div>
 
-  <div class="toggle-section">
-    <div class="toggle-header" onclick="toggleSection(this)">
-      <h3>Machine Learning Engineering</h3>
-      <button class="toggle-btn">▶</button>
-    </div>
-    <div class="toggle-content">
+  <div class="collapsible-block">
+    <h3 class="collapsible-toggle" onclick="toggleSection('ml-eng', this)">
+      Machine Learning Engineering
+      <span class="arrow-icon">▼</span>
+    </h3>
+    <div id="ml-eng" class="collapsible-content">
       <p>PyCharm, Jira</p>
     </div>
   </div>
 
-  <div class="toggle-section">
-    <div class="toggle-header" onclick="toggleSection(this)">
-      <h3>Langues</h3>
-      <button class="toggle-btn">▶</button>
-    </div>
-    <div class="toggle-content">
+  <div class="collapsible-block">
+    <h3 class="collapsible-toggle" onclick="toggleSection('langues', this)">
+      Langues
+      <span class="arrow-icon">▼</span>
+    </h3>
+    <div id="langues" class="collapsible-content">
       <p>Français (Langue Maternelle)<br>
       Anglais (Courant)</p>
     </div>
@@ -307,12 +248,17 @@
 
 <!-- JavaScript for toggling -->
 <script>
-  function toggleSection(header) {
-    const content = header.nextElementSibling;
-    const icon = header.querySelector('.toggle-btn');
-    content.style.display = content.style.display === 'block' ? 'none' : 'block';
-    icon.classList.toggle('rotate');
+  function toggleSection(id, headerElement) {
+    const section = document.getElementById(id);
+    const arrow = headerElement.querySelector('.arrow-icon');
+    if (section.style.display === "block") {
+      section.style.display = "none";
+      arrow.style.transform = "rotate(0deg)";
+    } else {
+      section.style.display = "block";
+      arrow.style.transform = "rotate(180deg)";
+    }
   }
   </script>
-
-{% endblock %}
+  
+  {% endblock %}

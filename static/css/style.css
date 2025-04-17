@@ -20,7 +20,7 @@
   --color-bg: #FFFFFF;          /* Background */
   --color-btn-bg: #3B82F6;      /* Button/nav blue */
   --color-btn-text: #FFFFFF;    /* Button text */
-  --color-h3: #006A4E;          /* Green for h3 */
+  --color-h3: #00A693;          /* Green for h3 */
   --color-important: #1C352D;   /* Emphasis text */
   --color-jade: #00A86B;        /* Jade color */
 }
@@ -224,7 +224,6 @@ a {
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  border-bottom: 1px solid black;
 }
 
 /* Collapsible content */
