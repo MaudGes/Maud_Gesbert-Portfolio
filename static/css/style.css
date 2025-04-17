@@ -1,7 +1,7 @@
 
 @font-face {
-  font-family: 'Matilde';
-  src: url('../fonts/matilde/matilde.otf') format('opentype');
+  font-family: 'Vevey';
+  src: url('../fonts/vevey/vevey.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -81,7 +81,7 @@ header {
 
 /* Titres et textes */
 h1 {
-  font-family: 'Matilde', sans-serif;
+  font-family: 'Vevey', sans-serif;
   font-weight: normal;
   background-color: var(--color-primary);
   color: white;
