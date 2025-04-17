@@ -13,7 +13,7 @@ def home():
 def cv():
     return render_template("cv/cv.html")
 
-app.route("/projects/heart_disease", methods=["GET", "POST"])
+@app.route("/projects/heart_disease", methods=["GET", "POST"])
 def heart_disease():
     prediction = None
     lang = request.args.get("lang") or request.form.get("lang") or "fr"
