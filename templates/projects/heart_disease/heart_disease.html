@@ -153,18 +153,31 @@ function convertAge() {
 }
 
 // Toggle sections with animation
-function toggleSection(id, headerElement) {
-  const section = document.getElementById(id);
-  const arrow = headerElement.querySelector('.arrow-icon');
+  function toggleSection(id, headerElement) {
+    const section = document.getElementById(id);
+    const arrow = headerElement.querySelector('.arrow-icon');
+    
+    const isOpen = section.style.display === "block" || section.style.display === "";
 
-  if (section.style.display === "block") {
-    section.style.display = "none";
-    arrow.style.transform = "rotate(0deg)";
-  } else {
-    section.style.display = "block";
-    arrow.style.transform = "rotate(180deg)";
+    if (isOpen) {
+      section.style.display = "none";
+      arrow.classList.remove("rotated");
+    } else {
+      section.style.display = "block";
+      arrow.classList.add("rotated");
+    }
   }
-}
+
+  // Open all collapsible sections by default on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".collapsible-content").forEach(section => {
+      section.style.display = "block";
+    });
+
+    document.querySelectorAll(".arrow-icon").forEach(icon => {
+      icon.classList.add("rotated");
+    });
+  });
 </script>
 
 {% endblock %}
