@@ -181,10 +181,22 @@ footer {
   text-align: center;
 }
 
+.centered-content ul {
+  text-align: left;
+  display: inline-block; /* important pour éviter que les ul s’étendent à 100% */
+}
+
+
 /* Visited links */
 a:visited {
   color: var(--color-h2); /* ou autre couleur de ton thème */
 }
+
+a {
+  color: inherit;
+}
+
+
 
 /* Styles responsives */
 @media (max-width: 768px) {
