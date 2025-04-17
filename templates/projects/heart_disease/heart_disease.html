@@ -19,7 +19,7 @@
 
     NB : Pour respecter le cadre RGPD, les données que vous fournissez ne sont pas conservées, 
     elle sont automatiquement détruites lorsque la page est quittée ou rechargée.
-</p>
+</p><br>
 
 <h3>Questions</h3>
 
@@ -111,33 +111,59 @@
 
 <h3>Etapes de création du modèle :</h3>
 
-<div id="pptCarousel" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-interval="false">
-  <!-- Indicators -->
+<div
+  id="pptCarousel"
+  class="carousel slide mt-4"
+  data-bs-ride="carousel"
+  data-bs-interval="false"
+>
   <div class="carousel-indicators">
     {% for idx in range(17) %}
-      <button
-        type="button"
-        data-bs-target="#pptCarousel"
-        data-bs-slide-to="{{ idx }}"
-        {% if idx == 0 %}class="active" aria-current="true"{% endif %}
-        aria-label="Slide {{ idx + 1 }}"
-      ></button>
+      <button type="button"
+              data-bs-target="#pptCarousel"
+              data-bs-slide-to="{{ idx }}"
+              {% if idx == 0 %}class="active" aria-current="true"{% endif %}
+              aria-label="Diapo {{ idx+1 }}">
+      </button>
     {% endfor %}
   </div>
 
-  <!-- Slides -->
   <div class="carousel-inner">
     {% for i in range(1, 18) %}
       <div class="carousel-item {% if i == 1 %}active{% endif %}">
-        <img
-          src="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT/Diapositive' ~ i ~ '.jpeg') }}"
-          class="d-block w-100"
-          alt="Slide {{ i }}"
-        >
+        <object
+          data="{{ url_for('static',
+                   filename='images/Maladie_Cardiaque_PPT.pdf') }}#page={{ i }}"
+          type="application/pdf"
+          width="100%"
+          height="600px">
+          <p>Votre navigateur ne supporte pas les PDF. 
+             <a href="{{ url_for('static',
+                    filename='images/Maladie_Cardiaque_PPT.pdf') }}">
+               Télécharger la présentation (PDF)
+             </a>
+          </p>
+        </object>
       </div>
     {% endfor %}
   </div>
+
+  <button class="carousel-control-prev"
+          type="button"
+          data-bs-target="#pptCarousel"
+          data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Précédent</span>
+  </button>
+  <button class="carousel-control-next"
+          type="button"
+          data-bs-target="#pptCarousel"
+          data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Suivant</span>
+  </button>
 </div>
+
 
 <br><a href="/" class="btn">Retour à l'accueil</a>
 
