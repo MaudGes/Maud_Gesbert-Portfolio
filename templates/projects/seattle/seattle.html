@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Projet : Heart Disease{% endblock %}
+{% block content %}
+
+<h1>Anticipation des besoins en consommation de bâtiments de la ville de Seattle</h1>
+
+<!-- Collapsible: Description -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('description-section', this)">
+    <span class="collapsible-title">Description</span>
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="description-section" class="collapsible-content">
+    <p>
+      Projet personnel scolaire réalisé pour mon master en Data Science.<br>
+      L’objectif de la ville de Seattle est d’être neutre en carbone d’ici 2050. 
+      Pour y parvenir, des enquêtes ont été menées par des agents en 2015 et 2016 sur la consommation énergétique des bâtiments.<br>
+      Ces enquêtes sont fastidieuses et demandent beaucoup de travail, c’est pourquoi la ville souhaite prédire les données des bâtiments non résidentiels qui n’ont pas encore été inspectés, et ainsi éviter d'envoyer des agents sur place.
+      Pour atteindre cet objectif, plusieurs modèles ont été testés pour la prédiction de la consommation d’énergie et des émissions de gaz à effet de serre : régression linéaire, forêt aléatoire, gradient boosting et SVR linéaire.<br>
+      Les meilleurs résultats ont été obtenus avec une forêt aléatoire.<br>
+      Le jeu de données utilisé a été fourni par la ville. Il est disponible sur Kaggle.<br>
+
+      Il semble que les prédictions de consommation d’énergie soient pertinentes, mais les émissions de gaz à effet de serre sont plus difficiles à prédire avec précision à l’aide des modèles de machine learning testés.<br><br>
+    </p>
+  </div>
+</div>
+
+<!-- Collapsible: PDF -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('pdf-section', this)">
+    <span class="collapsible-title">Étapes de création du modèle</span>
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="pdf-section" class="collapsible-content">
+    <div class="mt-4" style="height:600px; overflow:auto;">
+      <object
+        data="{{ url_for('static', filename='images/Seattle_FR.pdf') }}"
+        type="application/pdf"
+        width="100%"
+        height="100%">
+        <p>Si le navigateur ne supporte pas les PDF :
+          <a href="{{ url_for('static', filename='images/Seattle_FR.pdf') }}">Télécharger le PDF</a>
+        </p>
+      </object>
+    </div>
+  </div>
+</div>
+
+<br><a href="/" class="btn">Retour à l'accueil</a>
+
+<script>
+// Toggle sections with animation
+  function toggleSection(id, headerElement) {
+    const section = document.getElementById(id);
+    const arrow = headerElement.querySelector('.arrow-icon');
+    
+    const isOpen = section.style.display === "block" || section.style.display === "";
+
+    if (isOpen) {
+      section.style.display = "none";
+      arrow.classList.remove("rotated");
+    } else {
+      section.style.display = "block";
+      arrow.classList.add("rotated");
+    }
+  }
+
+  // Open all collapsible sections by default on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".collapsible-content").forEach(section => {
+      section.style.display = "block";
+    });
+
+    document.querySelectorAll(".arrow-icon").forEach(icon => {
+      icon.classList.add("rotated");
+    });
+  });
+</script>
+
+{% endblock %}

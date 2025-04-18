@@ -80,6 +80,12 @@ def aloe_vera():
         return render_template("projects/aloe/aloe_en.html")
     return render_template("projects/aloe/aloe.html")
 
+@app.route("/projects/seattle", endpoint="seattle")
+def aloe_vera():
+    lang = request.args.get("lang", "fr")
+    if lang == "en":
+        return render_template("projects/aloe/seattle_en.html")
+    return render_template("projects/aloe/seattle.html")
 
 @app.route("/projects/<project>")
 def show_project(project):

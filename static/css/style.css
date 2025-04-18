@@ -108,7 +108,7 @@ h2 {
 }
 
 h3 {
-  background-color: var(--color-h3);
+  background-color: var(--color-btn-bg);
   color: white;
   padding: 1rem 0;
   font-size: 1.8rem;
