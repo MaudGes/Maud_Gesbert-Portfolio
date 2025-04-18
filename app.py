@@ -73,6 +73,14 @@ def heart_disease():
         return render_template("projects/heart_disease/heart_disease_en.html", prediction=prediction)
     return render_template("projects/heart_disease/heart_disease.html", prediction=prediction)
 
+@app.route("/projects/aloe")
+def aloe_vera():
+    lang = request.args.get("lang", "fr")
+    if lang == "en":
+        return render_template("projects/aloe/aloe_en.html")
+    return render_template("projects/aloe/aloe.html")
+
+
 @app.route("/projects/<project>")
 def show_project(project):
     if project == "heart_disease":

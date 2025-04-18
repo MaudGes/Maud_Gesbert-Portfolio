@@ -45,6 +45,10 @@
       <a href="{{ url_for('cv', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
         {{ 'English' if lang == 'fr' else 'Français' }}
       </a>
+    {% elif request.endpoint == 'aloe_vera' %}
+      <a href="{{ url_for('aloe', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
+        {{ 'English' if lang == 'fr' else 'Français' }}
+      </a>
     {% elif request.endpoint == 'show_project' and request.view_args.project == 'lite' %}
       <a href="{{ url_for('show_project', project='lite', lang='en' if lang == 'fr' else 'fr') }}" class="lang-btn">
         {{ 'English' if lang == 'fr' else 'Français' }}
