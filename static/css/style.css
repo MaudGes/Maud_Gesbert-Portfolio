@@ -195,10 +195,10 @@ footer {
   display: inline-block;
 }
 
-/* Link behavior */
+/* Link behavior 
 a:visited {
   color: var(--color-h2);
-}
+}*/
 
 a {
   color: inherit;
