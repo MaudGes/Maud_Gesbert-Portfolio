@@ -37,6 +37,7 @@ body {
 /* Header and navigation */
 header {
   background-color: var(--color-btn-bg);
+  color: white; /* <-- Ajoute cette ligne */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -153,6 +154,7 @@ color-jade {
 .lang-btn {
   display: inline-block;
   background-color: #007bff;
+  color: var(--color-btn-text);
   color: white;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
@@ -199,6 +201,10 @@ a:visited {
 }
 
 a {
+  color: inherit;
+}
+
+a:not(.btn) {
   color: inherit;
 }
 
