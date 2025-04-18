@@ -2,7 +2,7 @@
 {% block title %}Aloe Vera{% endblock %}
 {% block content %}
 
-<h1>Analyse des ventes</h1>
+<h1>Sales Analysis</h1>
 
 <!-- Collapsible: Description -->
 <div class="collapsible-block">
@@ -12,13 +12,13 @@
   </h3>
   <div id="description-section" class="collapsible-content">
     <p>
-      Analyse réalisée pour une jeune entreprise qui vend des produits à base d'Aloe Vera.<br>
-      Le gérant de l'entreprise m'a fourni plusieurs fichiers excel : un contenant les ventes, un recensant les vendeurs
-      et enfin, un fichier recensant les clients (des pharmacies).<br>
-      En recoupant les différents fichiers, j'ai pu fournir une analyse des ventes en fonctions des vendeurs et des clients, 
-      tout en mettant en valeur les périodes de l'années auxquelles les ventes étaient les meilleures.<br><br>
-      <strong>NB :</strong> Les données sur les clients et les vendeurs sont anonymisées. Tous les noms ont été changés.<br>
-      Pour respecter la demande du gérant de ne pas divulguer trop d'information, je ne montrerai qu'un extrait des analyses effectuées.
+      Analysis carried out for a young company selling Aloe Vera-based products.<br>
+      The manager provided me with several CSV files: one containing sales data, one listing the salespeople,
+      and another listing the customers (pharmacies).<br>
+      By cross-referencing the different files, I was able to analyze the sales based on salespeople and customers,
+      while also highlighting the times of the year when sales were highest.<br><br>
+      <strong>Note:</strong> The data on custoemrs and salespeople is anonymized. All names have been changed.<br>
+      To respect the manager's request not to disclose too much information, I will only show an excerpt of the analysis.
     </p>
   </div>
 </div>
@@ -26,25 +26,25 @@
 <!-- Collapsible: PDF -->
 <div class="collapsible-block">
   <h3 class="collapsible-toggle" onclick="toggleSection('pdf-section', this)">
-    <span class="collapsible-title">Étapes de l'analyse</span>
+    <span class="collapsible-title">Analysis Steps</span>
     <span class="arrow-icon">▼</span>
   </h3>
   <div id="pdf-section" class="collapsible-content">
     <div class="mt-4" style="height:600px; overflow:auto;">
       <object
-        data="{{ url_for('static', filename='images/Aloe_Vera_FR.pdf') }}"
+        data="{{ url_for('static', filename='images/Aloe_Vera_EN.pdf') }}"
         type="application/pdf"
         width="100%"
         height="100%">
-        <p>Si le navigateur ne supporte pas les PDF :
-          <a href="{{ url_for('static', filename='images/Aloe_Vera_FR.pdf') }}">Télécharger le PDF</a>
+        <p>If your browser does not support PDFs:
+          <a href="{{ url_for('static', filename='images/Aloe_Vera_EN.pdf') }}">Download the PDF</a>
         </p>
       </object>
     </div>
   </div>
 </div>
 
-<br><a href="/" class="btn">Retour à l'accueil</a>
+<br><a href="/" class="btn">Back to Home</a>
 
 <script>
 
