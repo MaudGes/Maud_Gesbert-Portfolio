@@ -37,7 +37,7 @@ body {
 /* Header and navigation */
 header {
   background-color: var(--color-btn-bg);
-  color: white; /* <-- Ajoute cette ligne */
+  color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
