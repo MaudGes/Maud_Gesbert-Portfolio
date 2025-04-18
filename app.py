@@ -84,8 +84,8 @@ def aloe_vera():
 def aloe_vera():
     lang = request.args.get("lang", "fr")
     if lang == "en":
-        return render_template("projects/aloe/seattle_en.html")
-    return render_template("projects/aloe/seattle.html")
+        return render_template("projects/seattle/seattle_en.html")
+    return render_template("projects/seattle/seattle.html")
 
 @app.route("/projects/<project>")
 def show_project(project):
