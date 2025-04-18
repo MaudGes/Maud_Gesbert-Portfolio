@@ -73,7 +73,7 @@
     <div id="experiences" class="collapsible-content">
       <section class="experiences">
         <ul>
-          <li>
+          <li style="list-style-type: none;">
             <important-text>Data Scientist – French Space Command</important-text><br>
             (Oct 2023 - Mar 2025, Toulouse, Occitanie, France)<br>
             Work-study program<br><br>
@@ -86,7 +86,7 @@
               <li>HPC environment: Worked on the sandbox part of an HPC – Linux (Alma &amp; Debian).</li>
             </ul>
           </li>
-          <li><br>
+          <li style="list-style-type: none;"><br>
             <important-text>Management Controller – Airbus Defence and Space</important-text><br>
             (May 2022 - May 2023, Toulouse, Occitanie, France)<br><br>
             Skills: Financial Management · Key Performance Indicators · Business Analysis<br><br>
@@ -96,7 +96,7 @@
               <li>Budget presentation for upcoming fiscal years</li>
             </ul>
           </li>
-          <li><br>
+          <li style="list-style-type: none;"><br>
             <important-text>Financial Analyst – Amazon</important-text><br>
             (Aug 2020 - May 2021, Bratislava, Slovakia)<br><br>
             Skills: Financial Management · Client Relations · Business Analysis<br><br>
@@ -106,7 +106,7 @@
               <li>Implemented process improvements to accelerate issue resolution</li>
             </ul>
           </li>
-          <li><br>
+          <li style="list-style-type: none;"><br>
             <important-text>Sales Engineer – Bertin Technologies</important-text><br>
             (Oct 2018 - Nov 2019, Singapore)<br><br>
             Skills: Client Relations · Biotech Sector · KPIs · Negotiation · Business Analysis<br><br>
@@ -134,7 +134,7 @@
     <div id="education" class="collapsible-content">
       <section class="education">
         <ul>
-          <li>
+          <li style="list-style-type: none;">
             <important-text>Master’s in Data Science – OpenClassrooms &amp; CentraleSupélec</important-text><br>(Oct 2023 - Mar 2025)<br><br>
             Skills: Data Science · Data Analysis · Statistical Analysis<br><br>
             Languages &amp; frameworks:<br>
@@ -162,7 +162,7 @@
             Big Data processing on the Cloud<br>
             Scoping of an AI project
           </li>
-          <li><br>
+          <li style="list-style-type: none;"><br>
             <important-text>Data Analysis Bootcamp – DataBird</important-text><br>(Feb 2023 - May 2023)<br><br>
             Skills: GitHub, Reporting and Analysis, Statistics, ETL, Databases, Python, SQL, Tableau, Data Visualization<br><br>
             Activities and clubs:<br>
@@ -171,7 +171,7 @@
             Advanced Python courses (statistical studies with Pandas and NumPy, REST API queries, scraping)<br>
             Visualizations using Tableau
           </li>
-          <li><br>
+          <li style="list-style-type: none;"><br>
             <important-text>Dual MSc&amp;MA: Finance and Investments – London School of Business and Finance (LSBF)</important-text><br>(Oct 2019 - Mar 2022)<br><br>
             Skills: Financial Analysis · KPIs<br><br>
             Courses:<br>
@@ -180,7 +180,7 @@
             Quantitative Finance and Financial Markets<br>
             Mergers, Acquisitions and Private Equity
           </li>
-          <li><br>
+          <li style="list-style-type: none;"><br>
             <important-text>MBA, Biotechnology Management – Ionis-STM, Dual Competency School</important-text><br>(2015 - 2017)<br><br>
             Skills: Statistics · Biotech Sector · KPIs · Biostatistics<br><br>
             Courses:<br>
@@ -192,7 +192,7 @@
             Strategic and Operational Marketing of Bioproducts<br>
             Immunotechnologies
           </li>
-          <li><br>
+          <li style="list-style-type: none;"><br>
             <important-text>Bachelor’s in Human Biology and Biotechnology – Aix-Marseille University</important-text><br>(Sept 2012 - May 2015)<br><br>
             Skills: Biotech Sector · Biostatistics<br><br>
             Studied methods for generating new cell lines and genetic manipulation techniques.<br>
@@ -212,7 +212,7 @@
       const arrow = headerElement.querySelector('.arrow-icon');
       
       const isOpen = section.style.display === "block" || section.style.display === "";
-  
+
       if (isOpen) {
         section.style.display = "none";
         arrow.classList.remove("rotated");
@@ -221,17 +221,17 @@
         arrow.classList.add("rotated");
       }
     }
-  
+
     // Open all collapsible sections by default on page load
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".collapsible-content").forEach(section => {
         section.style.display = "block";
       });
-  
+
       document.querySelectorAll(".arrow-icon").forEach(icon => {
         icon.classList.add("rotated");
       });
     });
-  </script>
+</script>
 
 {% endblock %}
