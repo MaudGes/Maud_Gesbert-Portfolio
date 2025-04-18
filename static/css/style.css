@@ -134,7 +134,7 @@ color-jade {
 
 /* Modern buttons */
 .btn {
-  background-color: var(--color-bg-bg);
+  background-color: var(--color-btn-bg);
   color: var(--color-btn-text);
   padding: 0.75rem 1.5rem;
   border: none;
@@ -210,7 +210,7 @@ a {
 
 /* Clickable h3 toggle header */
 .collapsible-toggle {
-  background-color: var(--color-h3);
+  background-color: var(--color-btn-bg);
   color: white;
   padding: 1rem;
   cursor: pointer;
