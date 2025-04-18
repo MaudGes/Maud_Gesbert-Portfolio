@@ -134,7 +134,7 @@ color-jade {
 
 /* Modern buttons */
 .btn {
-  background-color: var(--color-btn-bg);
+  background-color: var(--color-bg-bg);
   color: var(--color-btn-text);
   padding: 0.75rem 1.5rem;
   border: none;
