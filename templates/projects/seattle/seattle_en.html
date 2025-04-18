@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Project: Seattle Building Energy Prediction{% endblock %}
+{% block content %}
+
+<h1>Forecasting Building Energy Needs in Seattle</h1>
+
+<!-- Collapsible: Description -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('description-section', this)">
+    <span class="collapsible-title">Description</span>
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="description-section" class="collapsible-content">
+    <p>
+      Academic project completed during my Master's in Data Science.<br>
+      The City of Seattle aims to become carbon neutral by 2050.  
+      To support this goal, agents conducted surveys in 2015 and 2016 to assess building energy consumption.<br>
+      These surveys are time-consuming and labor-intensive, so the city wants to predict consumption data for uninspected non-residential buildings to reduce in-person inspections.<br>
+      Several machine learning models were tested to predict both energy consumption and greenhouse gas emissions: linear regression, random forest, gradient boosting, and linear SVR.<br>
+      The best results were achieved using a random forest model.<br>
+      The dataset was provided by the City of Seattle and is available on Kaggle.<br><br>
+      The energy consumption predictions were relevant, but greenhouse gas emissions proved harder to predict accurately with the tested models.
+    </p>
+  </div>
+</div>
+
+<!-- Collapsible: PDF -->
+<div class="collapsible-block">
+  <h3 class="collapsible-toggle" onclick="toggleSection('pdf-section', this)">
+    <span class="collapsible-title">Model Building Steps (PDF)</span>
+    <span class="arrow-icon">▼</span>
+  </h3>
+  <div id="pdf-section" class="collapsible-content">
+    <div class="mt-4" style="height:600px; overflow:auto;">
+      <object
+        data="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}"
+        type="application/pdf"
+        width="100%"
+        height="100%">
+        <p>Your browser does not support PDFs.
+          <a href="{{ url_for('static', filename='images/Maladie_Cardiaque_PPT.pdf') }}">Download the PDF</a>
+        </p>
+      </object>
+    </div>
+  </div>
+</div>
+
+<br><a href="/" class="btn">Back to Home</a>
+
+<script>
+// Toggle sections with animation
+function toggleSection(id, headerElement) {
+  const section = document.getElementById(id);
+  const arrow = headerElement.querySelector('.arrow-icon');
+
+  const isOpen = section.style.display === "block" || section.style.display === "";
+
+  if (isOpen) {
+    section.style.display = "none";
+    arrow.classList.remove("rotated");
+  } else {
+    section.style.display = "block";
+    arrow.classList.add("rotated");
+  }
+}
+
+// Open all collapsible sections by default on page load
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".collapsible-content").forEach(section => {
+    section.style.display = "block";
+  });
+
+  document.querySelectorAll(".arrow-icon").forEach(icon => {
+    icon.classList.add("rotated");
+  });
+});
+</script>
+
+{% endblock %}
