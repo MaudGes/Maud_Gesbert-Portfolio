@@ -204,8 +204,8 @@ a {
   color: inherit;
 }
 
-a:not(.btn) {
-  color: inherit;
+a.btn {
+  color: var(--color-btn-text) !important;
 }
 
 /* Expandable section wrapper */
