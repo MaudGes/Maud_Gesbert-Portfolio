@@ -73,7 +73,7 @@ def heart_disease():
         return render_template("projects/heart_disease/heart_disease_en.html", prediction=prediction)
     return render_template("projects/heart_disease/heart_disease.html", prediction=prediction)
 
-@app.route("/projects/aloe")
+@app.route("/projects/aloe", endpoint="aloe_vera")
 def aloe_vera():
     lang = request.args.get("lang", "fr")
     if lang == "en":
